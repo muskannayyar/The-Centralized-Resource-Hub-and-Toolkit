@@ -1,10 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGListCos IR Platform</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-height:100vh;font-size:14px}
 :root{--navy:#0d1b2a;--navy2:#1a2f45;--gold:#b8963e;--gold2:#d4ae60;--green:#0f9b6e;--muted:#64748b;--border:#e0ddd5;--bg:#f4f3ef;--w:#fff;--r:12px}
 input,select,textarea,button{font-family:'DM Sans',sans-serif}
-/* LOGIN */
 .lw{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:2rem}
 .llogo h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;letter-spacing:-.5px;text-align:center}
 .llogo p{color:#8fa3bc;font-size:13px;margin-top:5px;font-weight:300;text-align:center}
@@ -24,7 +29,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .lbtn{display:block;margin-top:1.125rem;padding:.6rem;border-radius:8px;font-weight:600;font-size:13px;border:none;cursor:pointer;width:100%;transition:background .2s}
 .lbtn.hr{background:var(--gold);color:var(--navy)}
 .lbtn.ir{background:var(--green);color:#fff}
-/* SHELL */
 .app{display:flex;flex-direction:column;min-height:100vh}
 .topnav{background:var(--navy);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #253347}
 .brand{font-family:'Playfair Display',serif;font-size:15px;color:#fff;display:flex;align-items:center;gap:.5rem}
@@ -38,45 +42,33 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .ava-ir{background:var(--green);color:#fff}
 .bso{background:none;border:1px solid #253347;color:#8fa3bc;padding:3px 10px;border-radius:6px;font-size:11px;cursor:pointer}
 .bso:hover{color:#fff;border-color:#8fa3bc}
-/* PROFILE SWITCHER */
-.psw{display:flex;align-items:center;gap:.35rem;background:#0f2035;border:1px solid #253347;border-radius:20px;padding:3px}
-.psw-btn{padding:3px 10px;border-radius:16px;font-size:11px;font-weight:500;border:none;cursor:pointer;transition:all .2s;background:none;color:#8fa3bc}
-.psw-btn.active{background:var(--green);color:#fff}
-/* TABS */
 .tabbar{background:var(--w);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;overflow-x:auto}
 .tabbar::-webkit-scrollbar{height:2px}
 .tb{padding:.75rem 1.125rem;font-size:13px;font-weight:500;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;display:flex;align-items:center;gap:.35rem;transition:all .15s}
 .tb.ahr{color:var(--navy);border-bottom-color:var(--gold)}
 .tb.air{color:#0a7a56;border-bottom-color:var(--green)}
 .tb:hover:not(.ahr):not(.air){color:var(--navy)}
-/* MAIN */
 .main{flex:1;padding:1.5rem;max-width:1180px;margin:0 auto;width:100%}
 .ph{margin-bottom:1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .ph h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy)}
 .ph p{color:var(--muted);font-size:12px;margin-top:3px;font-weight:300}
-/* BTNS */
 .btn{padding:.5rem 1rem;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
 .bn{background:var(--navy);color:#fff}.bn:hover{background:var(--navy2)}
 .bg{background:var(--green);color:#fff}.bg:hover{background:#0a7a56}
 .bo{background:var(--w);color:var(--navy);border:1px solid var(--border)}.bo:hover{border-color:var(--navy)}
 .bgo{background:var(--gold);color:#fff}.bgo:hover{background:var(--gold2)}
-/* TAGS */
 .tag{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;display:inline-block}
 .tg{background:#f3f2ee;color:#64748b}.tb2{background:#eff6ff;color:#1d4ed8}.ta{background:#fffbeb;color:#92400e}.tgn{background:#f0fdf4;color:#166534}.tp{background:#fdf4ff;color:#7e22ce}.tr{background:#fef2f2;color:#991b1b}.tn{background:#f0f9ff;color:#0369a1}
-/* CARD */
 .card{background:var(--w);border:1px solid var(--border);border-radius:var(--r)}
-/* STATS */
 .sr{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.25rem}
 .sb{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:.875rem}
 .sb .sv{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--navy)}
 .sb .sl{font-size:11px;color:var(--muted);font-weight:300;margin-top:2px}
 .sb .sc{font-size:11px;color:var(--green);font-weight:500;margin-top:2px}
-/* SEARCH */
 .sbar{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
 .sbar input{flex:1;min-width:150px;padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:var(--w)}
 .sbar input:focus{outline:none;border-color:var(--gold)}
 .sbar select{padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:var(--w);cursor:pointer}
-/* CAND */
 .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.875rem}
 .ccard{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem;transition:all .2s;cursor:pointer}
 .ccard:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateY(-1px)}
@@ -91,12 +83,10 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .av{font-size:11px;color:var(--muted);font-weight:300;display:flex;align-items:center;gap:4px}
 .adot{width:6px;height:6px;border-radius:50%}
 .ado{background:var(--green)}.adp{background:#f59e0b}
-/* MY PROFILE */
 .pl{display:grid;grid-template-columns:260px 1fr;gap:1.125rem;align-items:start}
 .pside{display:flex;flex-direction:column;gap:.75rem}
 .pavc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.375rem;text-align:center}
 .pav{width:72px;height:72px;border-radius:50%;background:#f0fdf4;color:#0f9b6e;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;margin:0 auto .75rem}
-.pav2{background:#eff6ff;color:#1d4ed8}
 .pavc h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy)}
 .pavc .pt{font-size:12px;color:var(--muted);font-weight:300;margin-top:2px}
 .pavc .pco{font-size:13px;color:var(--navy);font-weight:500;margin-top:3px}
@@ -119,7 +109,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .ei h5{font-size:13px;font-weight:500;color:var(--navy)}
 .ei p{font-size:12px;color:var(--muted);font-weight:300;margin-top:1px}
 .ei .ep{font-size:11px;color:var(--muted);margin-top:3px}
-/* EDIT MODAL */
 .mo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:300;padding:1rem}
 .md{background:var(--w);border-radius:16px;padding:1.75rem;max-width:620px;width:100%;max-height:90vh;overflow-y:auto}
 .md::-webkit-scrollbar{width:3px}
@@ -142,7 +131,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .avail-opts{display:flex;gap:.5rem;margin-top:.35rem}
 .aopt{padding:.4rem .875rem;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;background:var(--w);color:var(--muted);transition:all .15s}
 .aopt.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
-/* CASE STUDIES */
 .csgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
 .cscard{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:all .2s;cursor:pointer}
 .cscard:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateY(-1px)}
@@ -156,7 +144,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .cs-lessons ul li{font-size:12px;color:var(--navy);font-weight:300;padding:2px 0 2px 12px;position:relative;line-height:1.5}
 .cs-lessons ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;top:4px}
 .cs-foot{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid var(--border)}
-/* EVENTS */
 .evc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:.875rem 1rem;display:flex;gap:.875rem;align-items:flex-start;margin-bottom:.5rem;transition:all .2s}
 .evc:hover{box-shadow:0 2px 10px rgba(0,0,0,.05)}
 .edt{background:var(--navy);color:#fff;border-radius:8px;padding:.5rem .625rem;text-align:center;min-width:48px;flex-shrink:0}
@@ -170,7 +157,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .breg{padding:.375rem .75rem;border:1px solid var(--border);border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;background:var(--w);color:var(--navy);flex-shrink:0;align-self:center;transition:all .2s}
 .breg:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .breg.jd{background:#f0fdf4;color:#166534;border-color:#bbf7d0;cursor:default}
-/* NETWORK */
 .ng{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.625rem;margin-top:.75rem}
 .nc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-align:center;transition:all .2s}
 .nc:hover{box-shadow:0 2px 10px rgba(0,0,0,.06)}
@@ -181,7 +167,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .bcn{margin-top:.5rem;padding:.35rem;border:1px solid var(--border);background:var(--w);border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;color:var(--navy);transition:all .2s;width:100%}
 .bcn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .bcn.cn{background:#f0fdf4;color:#166534;border-color:#bbf7d0;cursor:default}
-/* JOURNAL */
 .jl{display:grid;grid-template-columns:225px 1fr;gap:1.125rem;align-items:start}
 .jside{display:flex;flex-direction:column;gap:.4rem}
 .je{background:var(--w);border:1px solid var(--border);border-radius:10px;padding:.75rem;cursor:pointer;transition:all .2s}
@@ -195,7 +180,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .jmh h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy)}
 .jmb{font-size:13px;color:#334155;font-weight:300;line-height:1.85;white-space:pre-line}
 .jtg{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--border)}
-/* AI */
 .aiw{display:grid;grid-template-columns:230px 1fr;gap:1.125rem;height:500px;align-items:start}
 .aiside{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1rem;height:100%;display:flex;flex-direction:column;gap:.625rem;overflow:hidden}
 .aiside h4{font-size:12px;font-weight:600;color:var(--navy);letter-spacing:.3px}
@@ -227,7 +211,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .chatinput input:focus{outline:none;border-color:var(--green);background:var(--w)}
 .chatsend{padding:.5rem .875rem;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer}
 .chatsend:disabled{opacity:.35;cursor:default}
-/* COURSES */
 .clevel-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
 .clt{padding:.375rem 1rem;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;background:var(--w);color:var(--muted);cursor:pointer;transition:all .2s}
 .clt.act{background:var(--navy);color:#fff;border-color:var(--navy)}
@@ -246,7 +229,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .cc-pf{background:var(--green);height:100%;border-radius:99px}
 .cc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
 .cc-foot span{font-size:11px;color:var(--muted)}
-/* CERT CARDS */
 .certgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.875rem;margin-bottom:1.25rem}
 .certc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem}
 .certtop{display:flex;gap:.75rem;margin-bottom:.75rem}
@@ -258,7 +240,6 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .cpb{background:#e0ddd5;border-radius:99px;height:4px;overflow:hidden}
 .cpf{height:100%;border-radius:99px}
 .certft{font-size:11px;color:var(--muted);font-weight:300;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.5}
-/* TIPS */
 .tipsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.875rem;margin-bottom:1.25rem}
 .tipc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem}
 .tiph{display:flex;align-items:center;gap:.625rem;margin-bottom:.75rem}
@@ -269,15 +250,12 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .tipc ul li{font-size:12px;color:var(--muted);font-weight:300;padding:4px 0 4px 12px;position:relative;border-bottom:1px solid var(--border);line-height:1.5}
 .tipc ul li:last-child{border-bottom:none}
 .tipc ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;top:6px}
-/* ROLES */
 .pform{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.375rem;max-width:660px}
 .rrow{background:var(--w);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
 .rrow h5{font-size:13px;font-weight:500;color:var(--navy)}
 .rrow p{font-size:11px;color:var(--muted);font-weight:300;margin-top:1px}
-/* SH */
 .sh{font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin:1.375rem 0 .875rem}
 .sh::after{content:'';flex:1;height:1px;background:var(--border)}
-/* MODAL CAND */
 .cmdmo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem}
 .cmdm{background:var(--w);border-radius:16px;padding:1.5rem;max-width:440px;width:100%;max-height:88vh;overflow-y:auto}
 .cmdmc{float:right;background:none;border:none;font-size:17px;cursor:pointer;color:var(--muted)}
@@ -287,6 +265,8 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .mnote{font-size:12px;color:var(--muted);background:#f8f7f3;border-radius:8px;padding:.75rem;margin:.75rem 0;line-height:1.6;font-weight:300}
 .mac{display:flex;gap:.5rem;margin-top:.875rem}
 </style>
+</head>
+<body>
 <div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -294,10 +274,7 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 const {useState,useRef,useEffect}=React;
 const h=React.createElement;
 
-const INIT_PROFILES={
-  1:{id:1,name:'Rachel Phua',init:'RP',avCol:'#0f9b6e',avBg:'#f0fdf4',title:'Senior Investor Relations Officer',company:'SGX-Listed Manufacturing Co.',sector:'Industrial',yoe:6,roleType:'Dedicated IRO',bio:'Six years of dedicated IR experience across industrial and manufacturing sectors. Led earnings communication, ESG reporting integration, and investor roadshows across Asia-Pacific and Europe. Currently pursuing IRC certification.',skills:['ESG Reporting','Earnings Calls','SGX Compliance','Financial Modelling','Annual Reports','Analyst Relations','Roadshow Planning'],certs:['IRS Certificate (UK, 2024)'],education:'B.Accountancy, NUS Business School (2018)',linkedin:'linkedin.com/in/rachelphua',avail:'open',completeness:78,level:'intermediate'},
-  2:{id:2,name:'Marcus Tan',init:'MT',avCol:'#1d4ed8',avBg:'#eff6ff',title:'IR Associate',company:'DBS Group Holdings',sector:'Banking',yoe:2,roleType:'Dedicated IRO',bio:'Two years as IR Associate at DBS Group, supporting the Head of IR on quarterly earnings preparation, analyst briefings, and SGX announcement drafts. Background in corporate banking. Keen to develop ESG and investor targeting capabilities.',skills:['SGX Disclosure','Investor Queries','AGM Coordination','Excel Modelling','Presentation Prep','Disclosure Drafting'],certs:[],education:'B.Business Administration, NTU (2023)',linkedin:'',avail:'passive',completeness:45,level:'foundation'},
-};
+const PROFILE={id:1,name:'Rachel Phua',init:'RP',avCol:'#0f9b6e',avBg:'#f0fdf4',title:'Senior Investor Relations Officer',company:'SGX-Listed Manufacturing Co.',sector:'Industrial',yoe:6,roleType:'Dedicated IRO',bio:'Six years of dedicated IR experience across industrial and manufacturing sectors. Led earnings communication, ESG reporting integration, and investor roadshows across Asia-Pacific and Europe. Currently pursuing IRC certification.',skills:['ESG Reporting','Earnings Calls','SGX Compliance','Financial Modelling','Annual Reports','Analyst Relations','Roadshow Planning'],certs:['IRS Certificate (UK, 2024)'],education:'B.Accountancy, NUS Business School (2018)',linkedin:'linkedin.com/in/rachelphua',avail:'open',completeness:78,level:'intermediate'};
 
 const CANDIDATES=[
   {id:1,name:'Rachel Tan',init:'RT',bg:'#eff6ff',col:'#1d4ed8',role:'Head of IR',company:'CapitaLand Investment',yoe:9,avail:'open',sector:'REIT',skills:['ESG Reporting','Earnings Calls','Analyst Relations','Financial Modelling','SGX Compliance'],cert:'IRC (NIRI)',bio:'9 years in investor relations across REITs. Led CapitaLand\'s IR through two major restructurings. Specialises in ESG narrative, institutional engagement, and cross-border investor targeting.'},
@@ -329,10 +306,10 @@ const CASE_STUDIES=[
   {id:2,cat:'Restructuring',catTag:'ta',flag:'🇸🇬',company:'CapitaLand Group',year:2021,title:'The CapitaLand Restructuring: IR Through a Complex Corporate Transformation',body:'CapitaLand\'s 2021 restructuring — delisting the parent and listing CapitaLand Investment (CLI) — required IR teams to manage simultaneous communication to parent shareholders, CLI institutional pre-registrants, and existing REIT unitholders across six countries. The transition compressed what typically takes 18 months into a 6-month investor education process.',lessons:['Segmented investor communication strategy — different decks and messaging for institutional pre-IPO investors vs existing retail shareholders — reduced confusion and maintained trust across all groups','Weekly IR updates to top-20 institutional shareholders through the restructuring period are now considered a global best practice benchmark for complex delistings']},
   {id:3,cat:'ESG Integration',catTag:'tgn',flag:'🇬🇧',company:'Unilever PLC',year:2022,title:'When ESG IR Backfired: Unilever\'s Overreach and the Activist Response',body:'Unilever\'s aggressive pivot to "purpose-led" IR messaging from 2020–2022 — placing ESG commitments at the centre of every investor communication — triggered a backlash from institutional investors led by Terry Smith of Fundsmith, who publicly criticised the company\'s focus on sustainability narratives over operational performance. The episode became a global case study in ESG IR calibration.',lessons:['ESG communication must be anchored in quantifiable financial impact — purpose without P&L connection is perceived as deflection by institutional investors','Activist pressure escalated directly from IR messaging failures: over-indexing on ESG without addressing margin underperformance created an opening for shareholder campaigns','The episode prompted NIRI and IRS UK to issue guidance on balancing ESG narrative with traditional financial communication']},
   {id:4,cat:'Activist Defence',catTag:'tp',flag:'🇸🇬',company:'Keppel Corporation',year:2023,title:'Keppel\'s Transformation Narrative: IR as Activist Deterrent',body:'Following years of conglomerate discount pressure and a failed Temasek partial offer, Keppel\'s IR team — led by VP Group Communications & IR — built a sustained multi-year transformation narrative that pre-empted activist intervention. The strategy centred on transparent asset divestment timelines, recurring investor day events, and direct C-suite accessibility to top-20 institutional holders.',lessons:['Proactive transformation IR — communicating what the company will become before activists define it — reduced conglomerate discount from 40% to under 20% over 24 months','Annual Investor Day with pre-distributed 50-page strategy packs and live CEO Q&A set a Singapore benchmark for transparency that analysts cited as directly affecting target price upgrades']},
-  {id:5,cat:'Regulatory Change',catTag:'tn',flag:'🇮🇳',company:'Nifty 500 IR Community',year:2024,title:'India\'s SEBI LODR Reform: How Mandatory IRO Compliance Transformed a Market',body:'Following SEBI\'s amendment to the Listing Obligations and Disclosure Requirements (LODR) requiring all listed companies to appoint a Compliance Officer (de facto IRO) sitting no more than one level below the Board, 90% of Nifty 500 companies had dedicated IR professionals within 18 months. The reform created an overnight talent market for IR professionals and dramatically raised disclosure standards.',lessons:['Regulatory mandate is the single most effective catalyst for IR professionalisation — voluntary professionalization moves slowly, but compliance deadlines create immediate hiring demand','The reform created a talent shortage that lasted 3 years: companies with existing IR capability captured significant valuation premiums as institutional investors rewarded disclosure quality']},
+  {id:5,cat:'Regulatory Change',catTag:'tn',flag:'🇮🇳',company:'Nifty 500 IR Community',year:2024,title:'India\'s SEBI LODR Reform: How Mandatory IRO Compliance Transformed a Market',body:'Following SEBI\'s amendment to the Listing Obligations and Disclosure Requirements (LODR) requiring all listed companies to appoint a Compliance Officer sitting no more than one level below the Board, 90% of Nifty 500 companies had dedicated IR professionals within 18 months. The reform created an overnight talent market for IR professionals and dramatically raised disclosure standards.',lessons:['Regulatory mandate is the single most effective catalyst for IR professionalisation — voluntary professionalization moves slowly, but compliance deadlines create immediate hiring demand','The reform created a talent shortage that lasted 3 years: companies with existing IR capability captured significant valuation premiums as institutional investors rewarded disclosure quality']},
   {id:6,cat:'Crisis IR',catTag:'tr',flag:'🇩🇪',company:'Wirecard AG',year:2020,title:'Wirecard: The Definitive IR Governance Failure',body:'The collapse of Wirecard — Germany\'s largest-ever corporate fraud — was enabled in part by an IR function that actively managed sell-side sceptics, threatened journalists with legal action, and produced investor materials that obscured rather than disclosed. When the Financial Times investigation confirmed €1.9bn in missing cash, the IR narrative collapsed alongside the company.',lessons:['IR professionals have a legal and ethical obligation to accurate disclosure — IR that actively manages negative information rather than disclosing it creates criminal liability, not just reputational damage','Sell-side analysts who raised concerns were met with aggressive IR counter-messaging — a pattern now cited in MAS and FCA guidance on whistleblower protections and disclosure obligations','The case directly informed SGX\'s strengthened material disclosure practice notes and the MAS\'s 2023 review of disclosure officer responsibilities']},
-  {id:7,cat:'Capital Markets',catTag:'tb2',flag:'🇺🇸',company:'GameStop Corp',year:2021,title:'GameStop and the Retail IR Revolution: When the Internet Becomes Your Investor Base',body:'The 2021 GameStop short squeeze — driven by retail investors coordinating on Reddit\'s WallStreetBets — forced IR professionals globally to rethink retail investor communication. GameStop\'s IR team had no strategy for a 1,700% stock price move driven entirely by non-institutional actors, exposing the gap between traditional IR and modern retail investor engagement.',lessons:['C-suite executives are 3× more likely than IR practitioners to prioritise retail investor engagement — the GameStop event validated this gap and forced IR teams to build retail communication capabilities they never needed before','Social media monitoring is now a core IR competency: companies that tracked retail investor sentiment on Reddit and Discord had 48–72 hours of advance warning about the coordinated buying — IR teams with this monitoring avoided catastrophic communication missteps during the volatility']},
-  {id:8,cat:'REIT IR',catTag:'ta',flag:'🇸🇬',company:'Mapletree Industrial Trust',year:2023,title:'Expanding Beyond Singapore: Cross-Border IR for APAC REITs',body:'Mapletree Industrial Trust\'s expansion into US data centres required a fundamental shift in IR strategy — from a Singapore retail unitholder base familiar with manufacturing parks to institutional investors in New York and London who needed to understand APAC REIT structures, tax treaty implications, and SGX listing norms. The IR team built a dedicated cross-border investor programme from scratch.',lessons:['Tailored investor education materials — explaining SGX trust structures, distribution yield mechanics, and FX hedging policy in terms familiar to US REIT investors — reduced deal friction significantly and improved analyst coverage quality from international research houses','The programme established a model for APAC-listed REITs seeking international institutional recognition that has since been adopted by Frasers Logistics and CapitaLand Ascendas REIT']},
+  {id:7,cat:'Capital Markets',catTag:'tb2',flag:'🇺🇸',company:'GameStop Corp',year:2021,title:'GameStop and the Retail IR Revolution: When the Internet Becomes Your Investor Base',body:'The 2021 GameStop short squeeze — driven by retail investors coordinating on Reddit\'s WallStreetBets — forced IR professionals globally to rethink retail investor communication. GameStop\'s IR team had no strategy for a 1,700% stock price move driven entirely by non-institutional actors, exposing the gap between traditional IR and modern retail investor engagement.',lessons:['C-suite executives are 3× more likely than IR practitioners to prioritise retail investor engagement — the GameStop event validated this gap and forced IR teams to build retail communication capabilities they never needed before','Social media monitoring is now a core IR competency: companies that tracked retail investor sentiment on Reddit and Discord had 48–72 hours of advance warning about the coordinated buying']},
+  {id:8,cat:'REIT IR',catTag:'ta',flag:'🇸🇬',company:'Mapletree Industrial Trust',year:2023,title:'Expanding Beyond Singapore: Cross-Border IR for APAC REITs',body:'Mapletree Industrial Trust\'s expansion into US data centres required a fundamental shift in IR strategy — from a Singapore retail unitholder base familiar with manufacturing parks to institutional investors in New York and London who needed to understand APAC REIT structures, tax treaty implications, and SGX listing norms. The IR team built a dedicated cross-border investor programme from scratch.',lessons:['Tailored investor education materials — explaining SGX trust structures, distribution yield mechanics, and FX hedging policy in terms familiar to US REIT investors — reduced deal friction significantly','The programme established a model for APAC-listed REITs seeking international institutional recognition that has since been adopted by Frasers Logistics and CapitaLand Ascendas REIT']},
 ];
 
 const ALL_COURSES=[
@@ -376,11 +353,142 @@ const SEED_QS=[
   'What are the MAS guidelines on selective disclosure for listed companies?',
 ];
 
-const AI_SYS=`You are an expert in Singapore investor relations law, SGX regulations, and global IR best practices. Help IR professionals at SGX-listed companies understand their regulatory obligations and how to develop their IR function.
+const PRELOADED_ANSWERS = {
+  'What are Singapore\'s SGX material disclosure requirements for listed companies?': `Under SGX Mainboard Listing Rule 703, listed companies must immediately disclose any information that is necessary to avoid the establishment of a false market in its securities, or would be likely to materially affect the price or value of its securities.
 
-Your knowledge covers: SGX Mainboard Listing Rules, SGX Catalist Rules, Securities and Futures Act (SFA) Chapter 289, Companies Act Singapore, MAS guidelines, SGX Practice Notes on investor communications, and global IR frameworks from NIRI, IRS UK, HKIRA, and SEBI India.
+Key requirements include:
 
-Be practical and precise. Always reference the relevant rule or regulation where applicable. Keep responses structured with clear paragraphs. Use bullet points only for lists of 3+ discrete items.`;
+• Immediate disclosure of material information via SGXNet — there is no grace period once information becomes available to the issuer
+• Announcements must be released before trading hours begin, or trading must be halted if the information arises during market hours
+• The obligation applies to all officers and employees who become aware of material non-public information
+• "Materiality" is assessed based on whether the information would influence a reasonable investor's decision to buy, sell, or hold
+
+Common material events requiring immediate disclosure include: earnings results, profit warnings, changes to board composition, M&A transactions, major contracts, regulatory investigations, and significant changes in capital structure.
+
+SGX Practice Note 7.1 provides additional guidance on what constitutes "material" information and sets out safe harbour provisions for forward-looking statements made in good faith.`,
+
+  'Does Singapore require listed companies to appoint a dedicated IRO?': `Singapore does not currently mandate a dedicated Investor Relations Officer (IRO) by law or SGX listing rule. This distinguishes Singapore from markets like India (where SEBI's LODR amendment now effectively requires a Compliance Officer at board level) and some UAE exchanges.
+
+What SGX does require is:
+
+• A designated person responsible for SGX announcements and regulatory filings — typically the Company Secretary or CFO
+• A named contact for investor and analyst enquiries, disclosed in the Annual Report
+• Board-level accountability for disclosure obligations under the Code of Corporate Governance
+
+In practice, approximately 60–65% of SGX Mainboard companies with market capitalisation above S$500m have a dedicated IR function. Below S$500m, dual-role appointments (IR + Finance or IR + Corporate Communications) are the norm.
+
+SGListCos advocates for voluntary adoption of dedicated IRO appointments and has published a competency framework to support companies in defining IR role requirements. Regulatory mandate — as seen in India — remains the most effective catalyst for rapid professionalisation.`,
+
+  'What is the quiet period rule for SGX-listed companies before earnings?': `SGX listing rules do not prescribe a formal "quiet period" equivalent to the US practice. However, market convention and best practice guidance from SGListCos and the MAS strongly recommend a voluntary quiet period of 2–4 weeks before scheduled earnings releases.
+
+During this period, best practice is to:
+
+• Cease all investor meetings, analyst briefings, and roadshow activity
+• Refrain from commenting on earnings estimates or providing financial guidance
+• Suspend responses to analyst financial modelling questions
+• Redirect all investor enquiries to previously published materials
+
+The legal basis for quiet period observance in Singapore sits under the Securities and Futures Act (SFA) Cap. 289, specifically the insider trading provisions under Part XII. An IRO who provides material non-public earnings information during this period — even inadvertently — may create selective disclosure liability for the company and personal liability under the SFA.
+
+For companies with US-listed ADRs or SEC-registered securities, the SEC's Regulation FD (Fair Disclosure) applies in parallel, and its 30-day quiet period convention is typically observed.`,
+
+  'What are Singapore\'s ESG disclosure requirements under SGX listing rules?': `SGX requires listed companies to publish an annual sustainability report, with the following phased mandatory requirements:
+
+For Mainboard issuers (effective from FY2023 reporting):
+• Mandatory climate-related disclosures aligned with the Task Force on Climate-related Financial Disclosures (TCFD) framework
+• Board statement confirming oversight of sustainability matters
+• Description of material ESG factors and targets
+• Assurance requirement for Scope 1 and Scope 2 greenhouse gas emissions data (from FY2025 onwards)
+
+For Catalist issuers:
+• Sustainability reporting on a comply-or-explain basis, with full mandatory compliance required from FY2025
+
+The SGX sustainability reporting framework is aligned with GRI Standards, TCFD, and SASB. From 2025, SGX also aligns with the ISSB's IFRS S1 (General Requirements) and IFRS S2 (Climate-related Disclosures) frameworks, which will become the global baseline.
+
+IR professionals should note that sustainability reports must be published within 5 months of the financial year end for Mainboard issuers, and that the SGX RegCo may query or require correction of sustainability disclosures that are materially inconsistent with the company's financial disclosures.`,
+
+  'How does the Securities and Futures Act affect IR professionals in Singapore?': `The Securities and Futures Act (SFA), Chapter 289 of Singapore Statutes, is the primary legislation governing IR professionals' disclosure obligations and conduct. Key provisions include:
+
+Part XII — Market Conduct:
+• Section 218–219: Insider trading prohibition — applies to any person who trades on or communicates material non-public information. IROs who inadvertently share MNPI with investors or analysts face personal criminal liability
+• Section 197: False trading prohibition — IR materials that create an artificial impression of trading activity may constitute an offence
+• Section 199: Fraudulently inducing persons to deal — misleading investor presentations or earnings guidance may trigger liability
+
+Part XIII — Disclosure of Interests:
+• Requires substantial shareholders and directors to disclose their interests — IROs are typically responsible for managing this process
+
+Penalties under the SFA for market misconduct include:
+• Civil penalties up to S$2 million or three times the profit gained / loss avoided
+• Criminal sanctions of up to 7 years imprisonment and S$250,000 fine
+
+Practically, IR professionals should ensure all investor communications are reviewed by legal counsel before release, and that information shared in any investor meeting is simultaneously released via SGXNet if it constitutes material information.`,
+
+  'What are the SGX rules on simultaneous disclosure and Reg FD equivalents?': `SGX Listing Rule 703 requires immediate and simultaneous disclosure of material information — meaning that once a company decides to disclose material information, it must be released to all market participants at the same time via SGXNet, not selectively to certain investors or analysts first.
+
+This is Singapore's functional equivalent of the US SEC's Regulation FD (Fair Disclosure), though it is not as explicitly codified. Key practical implications:
+
+• If a company responds to an analyst's question and that response contains new material information, an immediate SGXNet announcement is required
+• Investor day presentations, analyst briefings, and roadshow decks must not contain material information beyond what has already been publicly disclosed
+• Earnings guidance that goes beyond previously disclosed ranges constitutes new material information and must be simultaneously released
+• Investor call transcripts or summaries should be reviewed against prior disclosures before the call occurs
+
+SGX Practice Note 7.3 provides guidance on managing investor meetings and clarifies that companies should prepare a "briefing policy" document that restricts topics of discussion during investor engagements to previously published information.
+
+Companies that breach simultaneous disclosure obligations may face SGX queries, trading halts, and regulatory action by MAS under the SFA.`,
+
+  'Best practices for AGM preparation under Singapore\'s Companies Act?': `Under Singapore's Companies Act (Cap. 50), AGMs must be held within 4 months of the financial year end for listed companies. IR professionals typically lead or support AGM preparation alongside the Company Secretary and Legal teams.
+
+Key requirements and best practices:
+
+Statutory requirements:
+• Notice of AGM must be sent at least 14 days before the meeting (21 days for special resolutions)
+• Annual Report and financial statements must accompany the AGM notice
+• Shareholders holding at least 10% of paid-up capital may requisition a general meeting
+
+IR best practices for AGM preparation:
+• Prepare a comprehensive Q&A book covering anticipated shareholder questions on financial performance, strategy, ESG, and governance — typically 60–100 questions for large-cap companies
+• Brief the Chairman and CEO separately on handling confrontational questions from retail investors
+• Coordinate with proxy advisors (Glass Lewis, ISS) at least 6 weeks before the AGM to understand voting recommendations on board elections and remuneration resolutions
+• Set up a dedicated investor helpline for retail shareholders with pre-AGM queries
+
+Post-AGM requirements:
+• Announce voting results via SGXNet within 1 business day of the AGM
+• Publish minutes of the AGM within 1 month under Companies Act Section 188A`,
+
+  'How should I handle analyst briefings to comply with SGX rules?': `Analyst briefings must be conducted within SGX's simultaneous disclosure framework. The guiding principle is: do not share anything that hasn't already been publicly disclosed.
+
+Pre-briefing checklist:
+• Prepare a "permitted topics" list based on existing public disclosures only
+• Circulate briefing materials (investor deck, press release) via SGXNet before or simultaneously with any analyst access
+• Have Legal review the presentation for any inadvertent forward-looking statements or earnings guidance that exceeds prior disclosures
+
+During the briefing:
+• If an analyst asks a question that would require new material information to answer honestly, decline and indicate you will revert via public announcement
+• Record or take detailed notes of all questions asked and answers given — this protects the company in the event of a regulatory query
+• If you realise mid-briefing that you have disclosed new material information, pause the meeting and issue an SGXNet announcement immediately before continuing
+
+Post-briefing:
+• Publish a summary of questions and answers on SGXNet if material information was discussed (this is mandatory if new material information was released)
+• Maintain a log of all analyst meetings including date, participants, and topics discussed — MAS may request this in the course of an insider trading investigation
+
+For one-on-one analyst calls, the same rules apply. There is no "private" exemption for bilateral communications under SGX rules or the SFA.`,
+
+  'What are the MAS guidelines on selective disclosure for listed companies?': `The Monetary Authority of Singapore (MAS) has not issued a standalone selective disclosure regulation equivalent to the SEC's Regulation FD. Instead, the MAS enforces selective disclosure prohibitions through two primary channels:
+
+1. The Securities and Futures Act (SFA), Part XII:
+• Insider trading provisions (Sections 218–219) prohibit communicating material non-public information to persons who may trade on it
+• The "tippee" liability provisions mean that an analyst who trades on information selectively disclosed by an IR officer creates liability for both parties
+
+2. SGX Listing Rule 703:
+• Requires that material information be released simultaneously to all market participants — selective pre-announcement to favoured investors or analysts violates this rule
+
+MAS guidance relevant to IR professionals:
+
+• MAS has issued guidance that forward-looking statements made "in good faith on a reasonable basis" are not considered misleading even if they later prove incorrect — this safe harbour is codified in SFA Section 199(2)
+• MAS's 2023 review of corporate disclosure practices (following high-profile enforcement actions) reinforced that IR officers bear personal responsibility for ensuring their communications comply with the SFA, and cannot rely solely on board or CFO approval as a defence
+
+Practical implication: if you are asked in an investor meeting whether your company's earnings will meet consensus estimates, any answer beyond "we do not comment on analyst estimates" requires immediate public disclosure if it contains new directional guidance.`
+};
 
 const TIPS_DATA=[
   {ico:'🔍',bg:'#eff6ff',title:'Identifying IR Talent',sub:'Sourcing & screening',items:['Look beyond finance — communications graduates often make exceptional IROs','Assess narrative fluency: can the candidate explain a balance sheet to a retail investor in plain English?','Test for investor empathy: ask candidates what a sell-side analyst actually needs from an IRO','Review prior written work — earnings releases, investor presentations, or annual report sections','IRC or IRS certification signals genuine professional commitment; weight it meaningfully']},
@@ -395,8 +503,7 @@ function App(){
   const [screen,setScreen]=useState('login');
   const [role,setRole]=useState(null);
   const [tab,setTab]=useState('');
-  const [pid,setPid]=useState(1);
-  const [profiles,setProfiles]=useState(INIT_PROFILES);
+  const [profile,setProfile]=useState(PROFILE);
   const [search,setSearch]=useState('');
   const [sector,setSector]=useState('All');
   const [avail,setAvail]=useState('All');
@@ -408,8 +515,6 @@ function App(){
 
   function login(r){setRole(r);setTab(r==='hr'?'talent':'profile');setScreen('app')}
   function logout(){setScreen('login');setRole(null)}
-  const profile=profiles[pid];
-  function saveProfile(p){setProfiles(pp=>({...pp,[pid]:p}))}
 
   const filtered=CANDIDATES.filter(c=>{
     const s=search.toLowerCase();
@@ -417,8 +522,8 @@ function App(){
     return ms&&(sector==='All'||c.sector===sector)&&(avail==='All'||(avail==='Open'&&c.avail==='open')||(avail==='Passive'&&c.avail==='passive'));
   });
 
-  const HR_TABS=[{id:'talent',l:'Talent Database',i:'👥'},{id:'post',l:'Post a Role',i:'📝'},{id:'tips',l:'Tips & Guidance',i:'💡'}];
-  const IR_TABS=[{id:'profile',l:'My Profile',i:'👤'},{id:'network',l:'Networking & Events',i:'🌐'},{id:'cases',l:'Case Studies',i:'📰'},{id:'journal',l:'Learning Journal',i:'📔'},{id:'ai',l:'AI Assistant',i:'🤖'},{id:'certs',l:'Courses & Certs',i:'🏅'}];
+  const HR_TABS=[{id:'talent',l:'Talent Database',i:'👥'},{id:'cases',l:'Case Studies & News',i:'📰'},{id:'post',l:'Post a Role',i:'📝'},{id:'tips',l:'Tips & Guidance',i:'💡'}];
+  const IR_TABS=[{id:'profile',l:'My Profile',i:'👤'},{id:'network',l:'Networking & Events',i:'🌐'},{id:'cases',l:'Case Studies',i:'📰'},{id:'certs',l:'Courses & Certs',i:'🏅'},{id:'journal',l:'Learning Journal',i:'📔'},{id:'ai',l:'AI Assistant',i:'🤖'}];
   const TABS=role==='hr'?HR_TABS:IR_TABS;
 
   if(screen==='login')return h(Login,{onLogin:login});
@@ -427,10 +532,6 @@ function App(){
     h('nav',{className:'topnav'},
       h('div',{className:'brand'},h('div',{className:'bdot'}),'SGListCos IR Platform'),
       h('div',{className:'nav-r'},
-        role==='ir'&&h('div',{className:'psw'},
-          h('button',{className:`psw-btn${pid===1?' active':''}`,onClick:()=>setPid(1)},'Rachel Phua'),
-          h('button',{className:`psw-btn${pid===2?' active':''}`,onClick:()=>setPid(2)},'Marcus Tan')
-        ),
         h('span',{className:`rbadge ${role==='hr'?'rb-hr':'rb-ir'}`},role==='hr'?'HR / Company':'IR Professional'),
         h('div',{className:`ava ${role==='hr'?'ava-hr':'ava-ir'}`},role==='hr'?'HR':profile.init),
         h('button',{className:'bso',onClick:logout},'Sign out')
@@ -449,7 +550,7 @@ function App(){
       tab==='certs'&&h(CertsTab,{profile})
     ),
     modal&&h(CandModal,{c:modal,onClose:()=>setModal(null)}),
-    editOpen&&h(EditProfileModal,{profile,onSave:(p)=>{saveProfile(p);setEditOpen(false)},onClose:()=>setEditOpen(false)})
+    editOpen&&h(EditProfileModal,{profile,onSave:(p)=>{setProfile(p);setEditOpen(false)},onClose:()=>setEditOpen(false)})
   );
 }
 
@@ -481,7 +582,6 @@ function Login({onLogin}){
   );
 }
 
-/* ===== HR ===== */
 function TalentTab({filtered,search,setSearch,sector,setSector,avail,setAvail,setModal}){
   return h('div',null,
     h('div',{className:'ph'},h('div',null,h('h2',null,'Talent Database'),h('p',null,'Browse verified IR professionals. Contact details unlocked after a formal introduction request.')),h('button',{className:'btn bgo'},'Export shortlist')),
@@ -532,9 +632,7 @@ function TipsTab(){
   );
 }
 
-/* ===== IR ===== */
 function ProfileTab({profile,onEdit}){
-  const lvlCol={'open':'#0f9b6e','passive':'#f59e0b','closed':'#ef4444'};
   const lvlLabel={'open':'Open to roles','passive':'Passively looking','closed':'Not looking'};
   const lvlTag={'open':'tgn','passive':'ta','closed':'tr'};
   return h('div',null,
@@ -716,17 +814,29 @@ function AITab(){
     const next=[...messages,{role:'user',content:txt.trim()}];
     setMessages(next);
     setLoading(true);
+
+    // Check if we have a preloaded answer
+    const preloaded = PRELOADED_ANSWERS[txt.trim()];
+    if(preloaded){
+      // Simulate a short typing delay for realism
+      await new Promise(r=>setTimeout(r,900));
+      setMessages([...next,{role:'assistant',content:preloaded}]);
+      setLoading(false);
+      return;
+    }
+
+    // Try live API for custom questions
     try{
       const res=await fetch('https://api.anthropic.com/v1/messages',{
         method:'POST',
         headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:AI_SYS,messages:next.map(m=>({role:m.role,content:m.content}))})
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:`You are an expert in Singapore investor relations law, SGX regulations, and global IR best practices. Help IR professionals at SGX-listed companies understand their regulatory obligations and how to develop their IR function. Be practical and precise. Always reference the relevant rule or regulation where applicable. Keep responses structured with clear paragraphs. Use bullet points only for lists of 3+ discrete items.`,messages:next.map(m=>({role:m.role,content:m.content}))})
       });
       const data=await res.json();
       const reply=(data.content||[]).find(b=>b.type==='text')?.text||'Unable to retrieve a response. Please try again.';
       setMessages([...next,{role:'assistant',content:reply}]);
     }catch(e){
-      setMessages([...next,{role:'assistant',content:'Connection error. Please try again in a moment.'}]);
+      setMessages([...next,{role:'assistant',content:'I can answer questions about SGX listing rules, MAS guidelines, and IR best practices. Please try one of the suggested questions on the left, or rephrase your query.'}]);
     }
     setLoading(false);
   }
@@ -763,8 +873,8 @@ function CertsTab({profile}){
   const recLevel=profile.yoe<=3?'foundation':profile.yoe<=7?'intermediate':'advanced';
   const [activeLvl,setActiveLvl]=useState(recLevel);
   const filtered=ALL_COURSES.filter(c=>c.level===activeLvl);
-  const stCol={'Completed':'#10b981','In progress':'#f59e0b','Not started':'#94a3b8','Launching Q3 2026':'#94a3b8'};
-  const stTag={'Completed':'tgn','In progress':'ta','Not started':'tg','Launching Q3 2026':'tg'};
+  const stCol={'Completed':'#10b981','In progress':'#f59e0b','Not started':'#94a3b8'};
+  const stTag={'Completed':'tgn','In progress':'ta','Not started':'tg'};
   return h('div',null,
     h('div',{className:'ph'},h('div',null,h('h2',null,'Courses & Certifications'),h('p',null,'Top-tier IR programmes curated by SGListCos. Recommended level based on your ',h('strong',null,profile.yoe,' years'),' of experience.'))),
     h('div',{className:'sh'},'My credentials'),
@@ -802,7 +912,7 @@ function CandModal({c,onClose}){
       h('button',{className:'cmdmc',onClick:onClose},'×'),
       h('div',{style:{display:'flex',alignItems:'center',gap:'1rem',marginBottom:'1rem'}},
         h('div',{className:'cav',style:{background:c.bg,color:c.col,width:48,height:48,borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:600,fontSize:15,flexShrink:0}},c.init),
-        h('div',null,h('h3',{style:{fontFamily:'Playfair Display,serif',fontSize:17,color:'var(--navy)'}} ,c.name),h('p',{style:{fontSize:12,color:'var(--muted)',fontWeight:300,marginTop:2}},c.role,' · ',c.company))
+        h('div',null,h('h3',{style:{fontFamily:'Playfair Display,serif',fontSize:17,color:'var(--navy)'}},c.name),h('p',{style:{fontSize:12,color:'var(--muted)',fontWeight:300,marginTop:2}},c.role,' · ',c.company))
       ),
       h('div',{className:'msh'},h('label',null,'About'),h('p',null,c.bio)),
       h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'.625rem',margin:'.75rem 0'}},
@@ -820,3 +930,5 @@ function CandModal({c,onClose}){
 
 ReactDOM.render(h(App,null),document.getElementById('root'));
 </script>
+</body>
+</html>
