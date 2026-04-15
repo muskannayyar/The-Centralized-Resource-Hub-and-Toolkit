@@ -1,0 +1,822 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-height:100vh;font-size:14px}
+:root{--navy:#0d1b2a;--navy2:#1a2f45;--gold:#b8963e;--gold2:#d4ae60;--green:#0f9b6e;--muted:#64748b;--border:#e0ddd5;--bg:#f4f3ef;--w:#fff;--r:12px}
+input,select,textarea,button{font-family:'DM Sans',sans-serif}
+/* LOGIN */
+.lw{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:2rem}
+.llogo h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;letter-spacing:-.5px;text-align:center}
+.llogo p{color:#8fa3bc;font-size:13px;margin-top:5px;font-weight:300;text-align:center}
+.llogo .lbadge{display:inline-block;margin:8px auto 0;padding:3px 10px;border:1px solid #334155;border-radius:20px;font-size:10px;color:#64748b;letter-spacing:.5px}
+.lrow{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:780px;width:100%;margin-top:2.5rem}
+.lcard{background:#162032;border:1px solid #253347;border-radius:16px;padding:1.75rem;cursor:pointer;transition:all .2s}
+.lcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+.lcard-ico{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1rem}
+.lcard.hr .lcard-ico{background:#0f2044}
+.lcard.ir .lcard-ico{background:#0c2d20}
+.lcard h3{font-family:'Playfair Display',serif;font-size:17px;color:#fff;margin-bottom:.35rem}
+.lcard .lsub{font-size:12px;color:#8fa3bc;font-weight:300;line-height:1.6;margin-bottom:.875rem}
+.lcard ul{list-style:none}
+.lcard ul li{font-size:12px;color:#8fa3bc;font-weight:300;padding:3px 0 3px 13px;position:relative}
+.lcard ul li::before{content:'·';position:absolute;left:2px;color:var(--gold)}
+.lcard.ir ul li::before{color:var(--green)}
+.lbtn{display:block;margin-top:1.125rem;padding:.6rem;border-radius:8px;font-weight:600;font-size:13px;border:none;cursor:pointer;width:100%;transition:background .2s}
+.lbtn.hr{background:var(--gold);color:var(--navy)}
+.lbtn.ir{background:var(--green);color:#fff}
+/* SHELL */
+.app{display:flex;flex-direction:column;min-height:100vh}
+.topnav{background:var(--navy);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #253347}
+.brand{font-family:'Playfair Display',serif;font-size:15px;color:#fff;display:flex;align-items:center;gap:.5rem}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.nav-r{display:flex;align-items:center;gap:.625rem}
+.rbadge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.rb-hr{background:#132240;color:#6fa3d4}
+.rb-ir{background:#0c2d20;color:#5dd4a8}
+.ava{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px}
+.ava-hr{background:var(--gold);color:var(--navy)}
+.ava-ir{background:var(--green);color:#fff}
+.bso{background:none;border:1px solid #253347;color:#8fa3bc;padding:3px 10px;border-radius:6px;font-size:11px;cursor:pointer}
+.bso:hover{color:#fff;border-color:#8fa3bc}
+/* PROFILE SWITCHER */
+.psw{display:flex;align-items:center;gap:.35rem;background:#0f2035;border:1px solid #253347;border-radius:20px;padding:3px}
+.psw-btn{padding:3px 10px;border-radius:16px;font-size:11px;font-weight:500;border:none;cursor:pointer;transition:all .2s;background:none;color:#8fa3bc}
+.psw-btn.active{background:var(--green);color:#fff}
+/* TABS */
+.tabbar{background:var(--w);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;overflow-x:auto}
+.tabbar::-webkit-scrollbar{height:2px}
+.tb{padding:.75rem 1.125rem;font-size:13px;font-weight:500;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;display:flex;align-items:center;gap:.35rem;transition:all .15s}
+.tb.ahr{color:var(--navy);border-bottom-color:var(--gold)}
+.tb.air{color:#0a7a56;border-bottom-color:var(--green)}
+.tb:hover:not(.ahr):not(.air){color:var(--navy)}
+/* MAIN */
+.main{flex:1;padding:1.5rem;max-width:1180px;margin:0 auto;width:100%}
+.ph{margin-bottom:1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ph h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy)}
+.ph p{color:var(--muted);font-size:12px;margin-top:3px;font-weight:300}
+/* BTNS */
+.btn{padding:.5rem 1rem;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+.bn{background:var(--navy);color:#fff}.bn:hover{background:var(--navy2)}
+.bg{background:var(--green);color:#fff}.bg:hover{background:#0a7a56}
+.bo{background:var(--w);color:var(--navy);border:1px solid var(--border)}.bo:hover{border-color:var(--navy)}
+.bgo{background:var(--gold);color:#fff}.bgo:hover{background:var(--gold2)}
+/* TAGS */
+.tag{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;display:inline-block}
+.tg{background:#f3f2ee;color:#64748b}.tb2{background:#eff6ff;color:#1d4ed8}.ta{background:#fffbeb;color:#92400e}.tgn{background:#f0fdf4;color:#166534}.tp{background:#fdf4ff;color:#7e22ce}.tr{background:#fef2f2;color:#991b1b}.tn{background:#f0f9ff;color:#0369a1}
+/* CARD */
+.card{background:var(--w);border:1px solid var(--border);border-radius:var(--r)}
+/* STATS */
+.sr{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.25rem}
+.sb{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:.875rem}
+.sb .sv{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--navy)}
+.sb .sl{font-size:11px;color:var(--muted);font-weight:300;margin-top:2px}
+.sb .sc{font-size:11px;color:var(--green);font-weight:500;margin-top:2px}
+/* SEARCH */
+.sbar{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.sbar input{flex:1;min-width:150px;padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:var(--w)}
+.sbar input:focus{outline:none;border-color:var(--gold)}
+.sbar select{padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:var(--w);cursor:pointer}
+/* CAND */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.875rem}
+.ccard{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem;transition:all .2s;cursor:pointer}
+.ccard:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateY(-1px)}
+.ctx{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.cav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;flex-shrink:0}
+.cn{font-size:14px;font-weight:600;color:var(--navy)}
+.cr{font-size:12px;color:var(--muted);font-weight:300;margin-top:1px}
+.tr2{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.625rem}
+.skr{display:flex;gap:.25rem;flex-wrap:wrap;margin-bottom:.625rem}
+.stag{background:#f4f3ef;border:1px solid var(--border);color:#475569;font-size:11px;padding:2px 6px;border-radius:4px}
+.cf{display:flex;justify-content:space-between;align-items:center;padding-top:.625rem;border-top:1px solid var(--border)}
+.av{font-size:11px;color:var(--muted);font-weight:300;display:flex;align-items:center;gap:4px}
+.adot{width:6px;height:6px;border-radius:50%}
+.ado{background:var(--green)}.adp{background:#f59e0b}
+/* MY PROFILE */
+.pl{display:grid;grid-template-columns:260px 1fr;gap:1.125rem;align-items:start}
+.pside{display:flex;flex-direction:column;gap:.75rem}
+.pavc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.375rem;text-align:center}
+.pav{width:72px;height:72px;border-radius:50%;background:#f0fdf4;color:#0f9b6e;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;margin:0 auto .75rem}
+.pav2{background:#eff6ff;color:#1d4ed8}
+.pavc h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy)}
+.pavc .pt{font-size:12px;color:var(--muted);font-weight:300;margin-top:2px}
+.pavc .pco{font-size:13px;color:var(--navy);font-weight:500;margin-top:3px}
+.pbar-wrap{display:flex;align-items:center;gap:6px;margin-top:.75rem}
+.pbar{background:#f0ede4;border-radius:99px;height:4px;flex:1;overflow:hidden}
+.pfill{background:var(--gold);height:100%;border-radius:99px}
+.plbl{font-size:11px;color:var(--muted);white-space:nowrap}
+.pstats{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:.75rem}
+.pstat{background:#f8f7f3;border-radius:8px;padding:.5rem;text-align:center}
+.psv{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--navy)}
+.psl{font-size:10px;color:var(--muted);font-weight:300;margin-top:1px}
+.pacts{display:flex;flex-direction:column;gap:.35rem;margin-top:.75rem}
+.psecs{display:flex;flex-direction:column;gap:.75rem}
+.psec{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem}
+.psh{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.psh h4{font-size:13px;font-weight:600;color:var(--navy)}
+.ebtn{font-size:11px;color:var(--gold);background:none;border:none;cursor:pointer;font-weight:500}
+.ei{padding:.5rem 0;border-bottom:1px solid var(--border)}
+.ei:last-child{border-bottom:none;padding-bottom:0}
+.ei h5{font-size:13px;font-weight:500;color:var(--navy)}
+.ei p{font-size:12px;color:var(--muted);font-weight:300;margin-top:1px}
+.ei .ep{font-size:11px;color:var(--muted);margin-top:3px}
+/* EDIT MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:300;padding:1rem}
+.md{background:var(--w);border-radius:16px;padding:1.75rem;max-width:620px;width:100%;max-height:90vh;overflow-y:auto}
+.md::-webkit-scrollbar{width:3px}
+.md::-webkit-scrollbar-thumb{background:var(--border)}
+.md-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.md-hd h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy)}
+.mdc{font-size:18px;background:none;border:none;cursor:pointer;color:var(--muted)}
+.ff{margin-bottom:.875rem}
+.ff label{display:block;font-size:10px;font-weight:600;color:var(--navy);margin-bottom:.3rem;letter-spacing:.4px;text-transform:uppercase}
+.ff input,.ff select,.ff textarea{width:100%;padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:var(--w);resize:vertical}
+.ff input:focus,.ff select:focus,.ff textarea:focus{outline:none;border-color:var(--gold)}
+.ff textarea{min-height:75px;font-weight:300;line-height:1.6}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.skill-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.35rem}
+.schip{background:#f4f3ef;border:1px solid var(--border);color:#334155;font-size:12px;padding:3px 8px;border-radius:20px;display:flex;align-items:center;gap:4px}
+.schip-x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0}
+.schip-add{background:none;border:1px dashed var(--border);color:var(--muted);font-size:12px;padding:3px 10px;border-radius:20px;cursor:pointer}
+.schip-add:hover{border-color:var(--green);color:var(--green)}
+.avail-opts{display:flex;gap:.5rem;margin-top:.35rem}
+.aopt{padding:.4rem .875rem;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;background:var(--w);color:var(--muted);transition:all .15s}
+.aopt.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* CASE STUDIES */
+.csgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
+.cscard{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:all .2s;cursor:pointer}
+.cscard:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateY(-1px)}
+.cs-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem}
+.cs-co{font-size:12px;color:var(--muted);font-weight:300;margin-top:2px}
+.cs-title{font-family:'Playfair Display',serif;font-size:15px;color:var(--navy);margin:.5rem 0 .375rem;line-height:1.35}
+.cs-body{font-size:12px;color:#475569;font-weight:300;line-height:1.65;margin-bottom:.875rem}
+.cs-lessons{background:#f8f7f3;border-radius:8px;padding:.75rem;margin-bottom:.875rem}
+.cs-lessons .cl{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.35rem}
+.cs-lessons ul{list-style:none}
+.cs-lessons ul li{font-size:12px;color:var(--navy);font-weight:300;padding:2px 0 2px 12px;position:relative;line-height:1.5}
+.cs-lessons ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;top:4px}
+.cs-foot{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid var(--border)}
+/* EVENTS */
+.evc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:.875rem 1rem;display:flex;gap:.875rem;align-items:flex-start;margin-bottom:.5rem;transition:all .2s}
+.evc:hover{box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.edt{background:var(--navy);color:#fff;border-radius:8px;padding:.5rem .625rem;text-align:center;min-width:48px;flex-shrink:0}
+.em{font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#8fa3bc}
+.ed{font-size:17px;font-weight:600;font-family:'Playfair Display',serif;line-height:1.1}
+.ei2{flex:1;min-width:0}
+.ei2 h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:1px}
+.ei2 p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5}
+.em2{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+.em2 span{font-size:11px;color:var(--muted)}
+.breg{padding:.375rem .75rem;border:1px solid var(--border);border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;background:var(--w);color:var(--navy);flex-shrink:0;align-self:center;transition:all .2s}
+.breg:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.breg.jd{background:#f0fdf4;color:#166534;border-color:#bbf7d0;cursor:default}
+/* NETWORK */
+.ng{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.625rem;margin-top:.75rem}
+.nc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-align:center;transition:all .2s}
+.nc:hover{box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.nca{width:44px;height:44px;border-radius:50%;margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.nc h5{font-size:12px;font-weight:500;color:var(--navy)}
+.nc .nr{font-size:11px;color:var(--muted);font-weight:300;margin-top:1px}
+.nc .nco{font-size:10px;color:var(--muted);margin-top:1px}
+.bcn{margin-top:.5rem;padding:.35rem;border:1px solid var(--border);background:var(--w);border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;color:var(--navy);transition:all .2s;width:100%}
+.bcn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bcn.cn{background:#f0fdf4;color:#166534;border-color:#bbf7d0;cursor:default}
+/* JOURNAL */
+.jl{display:grid;grid-template-columns:225px 1fr;gap:1.125rem;align-items:start}
+.jside{display:flex;flex-direction:column;gap:.4rem}
+.je{background:var(--w);border:1px solid var(--border);border-radius:10px;padding:.75rem;cursor:pointer;transition:all .2s}
+.je:hover{border-color:var(--green)}
+.je.ja{border-color:var(--green);background:#f6fef9}
+.je-d{font-size:10px;color:var(--muted);font-weight:300;margin-bottom:2px}
+.je-t{font-size:12px;font-weight:500;color:var(--navy)}
+.je-p{font-size:11px;color:var(--muted);font-weight:300;margin-top:1px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.jm{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.375rem}
+.jmh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.875rem;flex-wrap:wrap;gap:.5rem}
+.jmh h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy)}
+.jmb{font-size:13px;color:#334155;font-weight:300;line-height:1.85;white-space:pre-line}
+.jtg{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--border)}
+/* AI */
+.aiw{display:grid;grid-template-columns:230px 1fr;gap:1.125rem;height:500px;align-items:start}
+.aiside{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1rem;height:100%;display:flex;flex-direction:column;gap:.625rem;overflow:hidden}
+.aiside h4{font-size:12px;font-weight:600;color:var(--navy);letter-spacing:.3px}
+.aiside p{font-size:11px;color:var(--muted);font-weight:300;line-height:1.5}
+.sqlist{display:flex;flex-direction:column;gap:.35rem;overflow-y:auto;flex:1}
+.sqlist::-webkit-scrollbar{width:3px}
+.sqlist::-webkit-scrollbar-thumb{background:var(--border)}
+.sq{padding:.45rem .75rem;border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--navy);cursor:pointer;background:#f8f7f3;text-align:left;font-weight:400;line-height:1.45;transition:all .2s}
+.sq:hover{border-color:var(--green);background:#f0fdf4;color:#0a7a56}
+.aichat{background:var(--w);border:1px solid var(--border);border-radius:var(--r);display:flex;flex-direction:column;height:100%;overflow:hidden}
+.aihead{padding:.875rem 1.125rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.625rem;flex-shrink:0}
+.aiav{width:34px;height:34px;border-radius:50%;background:#0c2d20;display:flex;align-items:center;justify-content:center;font-size:15px}
+.aihead h4{font-size:13px;font-weight:600;color:var(--navy)}
+.aihead p{font-size:11px;color:var(--muted);font-weight:300}
+.chatmsgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem}
+.chatmsgs::-webkit-scrollbar{width:3px}
+.chatmsgs::-webkit-scrollbar-thumb{background:var(--border)}
+.msg{display:flex;gap:.5rem;align-items:flex-start}
+.mbu{background:var(--navy);color:#fff;border-radius:10px 10px 0 10px;max-width:78%;padding:.55rem .875rem;font-size:13px;line-height:1.6;font-weight:300;margin-left:auto}
+.mba{background:#f8f7f3;color:var(--navy);border-radius:0 10px 10px 10px;max-width:85%;padding:.55rem .875rem;font-size:13px;line-height:1.65;font-weight:300;white-space:pre-line}
+.maiav{width:26px;height:26px;border-radius:50%;background:#0c2d20;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.typing{display:flex;gap:3px;padding:.4rem .7rem;background:#f8f7f3;border-radius:0 10px 10px 10px}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:b .8s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.chatinput{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;gap:.4rem;flex-shrink:0}
+.chatinput input{flex:1;padding:.5rem .875rem;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--navy);background:#f8f7f3}
+.chatinput input:focus{outline:none;border-color:var(--green);background:var(--w)}
+.chatsend{padding:.5rem .875rem;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer}
+.chatsend:disabled{opacity:.35;cursor:default}
+/* COURSES */
+.clevel-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
+.clt{padding:.375rem 1rem;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;background:var(--w);color:var(--muted);cursor:pointer;transition:all .2s}
+.clt.act{background:var(--navy);color:#fff;border-color:var(--navy)}
+.clt.rec{border-color:var(--green);color:var(--green)}
+.rec-badge{font-size:10px;background:#f0fdf4;color:var(--green);border:1px solid #bbf7d0;padding:2px 8px;border-radius:20px;font-weight:600;margin-left:.5rem}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.875rem}
+.ccrd{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem;transition:all .2s}
+.ccrd:hover{box-shadow:0 3px 12px rgba(0,0,0,.07);transform:translateY(-1px)}
+.ccrd.rec-course{border-color:var(--green);border-width:1.5px}
+.ccrd .cico{font-size:22px;margin-bottom:.625rem}
+.ccrd h5{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:.25rem}
+.ccrd p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.55}
+.cc-meta{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.625rem}
+.cc-prog{margin:.625rem 0}
+.cc-pb{background:#f0ede4;border-radius:99px;height:4px;overflow:hidden;margin-top:.25rem}
+.cc-pf{background:var(--green);height:100%;border-radius:99px}
+.cc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
+.cc-foot span{font-size:11px;color:var(--muted)}
+/* CERT CARDS */
+.certgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.875rem;margin-bottom:1.25rem}
+.certc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem}
+.certtop{display:flex;gap:.75rem;margin-bottom:.75rem}
+.certbadge{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.certc h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.certsub{font-size:11px;color:var(--muted);font-weight:300}
+.cpw{background:#f8f7f3;border-radius:8px;padding:.625rem;margin:.625rem 0}
+.cpl{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:.3rem}
+.cpb{background:#e0ddd5;border-radius:99px;height:4px;overflow:hidden}
+.cpf{height:100%;border-radius:99px}
+.certft{font-size:11px;color:var(--muted);font-weight:300;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.5}
+/* TIPS */
+.tipsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.875rem;margin-bottom:1.25rem}
+.tipc{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem}
+.tiph{display:flex;align-items:center;gap:.625rem;margin-bottom:.75rem}
+.tipico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.tipc h4{font-size:13px;font-weight:600;color:var(--navy)}
+.tipc .tsu{font-size:11px;color:var(--muted);font-weight:300;margin-top:1px}
+.tipc ul{list-style:none}
+.tipc ul li{font-size:12px;color:var(--muted);font-weight:300;padding:4px 0 4px 12px;position:relative;border-bottom:1px solid var(--border);line-height:1.5}
+.tipc ul li:last-child{border-bottom:none}
+.tipc ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;top:6px}
+/* ROLES */
+.pform{background:var(--w);border:1px solid var(--border);border-radius:var(--r);padding:1.375rem;max-width:660px}
+.rrow{background:var(--w);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
+.rrow h5{font-size:13px;font-weight:500;color:var(--navy)}
+.rrow p{font-size:11px;color:var(--muted);font-weight:300;margin-top:1px}
+/* SH */
+.sh{font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin:1.375rem 0 .875rem}
+.sh::after{content:'';flex:1;height:1px;background:var(--border)}
+/* MODAL CAND */
+.cmdmo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem}
+.cmdm{background:var(--w);border-radius:16px;padding:1.5rem;max-width:440px;width:100%;max-height:88vh;overflow-y:auto}
+.cmdmc{float:right;background:none;border:none;font-size:17px;cursor:pointer;color:var(--muted)}
+.msh{margin-bottom:.75rem}
+.msh label{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:2px}
+.msh p{font-size:13px;color:var(--navy);font-weight:300;line-height:1.6}
+.mnote{font-size:12px;color:var(--muted);background:#f8f7f3;border-radius:8px;padding:.75rem;margin:.75rem 0;line-height:1.6;font-weight:300}
+.mac{display:flex;gap:.5rem;margin-top:.875rem}
+</style>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+const {useState,useRef,useEffect}=React;
+const h=React.createElement;
+
+const INIT_PROFILES={
+  1:{id:1,name:'Rachel Phua',init:'RP',avCol:'#0f9b6e',avBg:'#f0fdf4',title:'Senior Investor Relations Officer',company:'SGX-Listed Manufacturing Co.',sector:'Industrial',yoe:6,roleType:'Dedicated IRO',bio:'Six years of dedicated IR experience across industrial and manufacturing sectors. Led earnings communication, ESG reporting integration, and investor roadshows across Asia-Pacific and Europe. Currently pursuing IRC certification.',skills:['ESG Reporting','Earnings Calls','SGX Compliance','Financial Modelling','Annual Reports','Analyst Relations','Roadshow Planning'],certs:['IRS Certificate (UK, 2024)'],education:'B.Accountancy, NUS Business School (2018)',linkedin:'linkedin.com/in/rachelphua',avail:'open',completeness:78,level:'intermediate'},
+  2:{id:2,name:'Marcus Tan',init:'MT',avCol:'#1d4ed8',avBg:'#eff6ff',title:'IR Associate',company:'DBS Group Holdings',sector:'Banking',yoe:2,roleType:'Dedicated IRO',bio:'Two years as IR Associate at DBS Group, supporting the Head of IR on quarterly earnings preparation, analyst briefings, and SGX announcement drafts. Background in corporate banking. Keen to develop ESG and investor targeting capabilities.',skills:['SGX Disclosure','Investor Queries','AGM Coordination','Excel Modelling','Presentation Prep','Disclosure Drafting'],certs:[],education:'B.Business Administration, NTU (2023)',linkedin:'',avail:'passive',completeness:45,level:'foundation'},
+};
+
+const CANDIDATES=[
+  {id:1,name:'Rachel Tan',init:'RT',bg:'#eff6ff',col:'#1d4ed8',role:'Head of IR',company:'CapitaLand Investment',yoe:9,avail:'open',sector:'REIT',skills:['ESG Reporting','Earnings Calls','Analyst Relations','Financial Modelling','SGX Compliance'],cert:'IRC (NIRI)',bio:'9 years in investor relations across REITs. Led CapitaLand\'s IR through two major restructurings. Specialises in ESG narrative, institutional engagement, and cross-border investor targeting.'},
+  {id:2,name:'James Lim',init:'JL',bg:'#f0fdf4',col:'#0a7a56',role:'Senior IRO',company:'DBS Group Holdings',yoe:6,avail:'passive',sector:'Banking',skills:['Investor Targeting','CRM Tools','SGX Disclosure','Roadshows','Peer Benchmarking'],cert:'IRS Certificate',bio:'6 years managing institutional investor relations at DBS. Coordinates APAC-wide disclosure obligations and manages analyst relationships across 12 bulge-bracket houses.'},
+  {id:3,name:'Priya Nair',init:'PN',bg:'#fdf4ff',col:'#7e22ce',role:'IR Manager',company:'Sembcorp Industries',yoe:4,avail:'open',sector:'Industrial',skills:['Narrative Development','Annual Reports','ESG Integration','Media Relations'],cert:'—',bio:'Four years in IR at Sembcorp focusing on sustainability narrative and annual report production. Seeking senior IR roles at large-cap or REIT companies.'},
+  {id:4,name:'Kevin Ong',init:'KO',bg:'#fff7ed',col:'#c2410c',role:'CFO / Acting IRO',company:'Centurion Corp',yoe:12,avail:'passive',sector:'Industrial',skills:['P&L Communication','Governance','Board Relations','M&A','Compliance'],cert:'CPA',bio:'12 years across finance and IR. Deep board and M&A experience, well-networked with SGX institutional investor base.'},
+  {id:5,name:'Linh Nguyen',init:'LN',bg:'#f0fdf4',col:'#166534',role:'IR Associate',company:'Mapletree Logistics Trust',yoe:2,avail:'open',sector:'REIT',skills:['AGM Coordination','Investor Queries','Disclosure Writing','Excel'],cert:'IRC (in progress)',bio:'Early-career IR professional at Mapletree. Manages day-to-day investor queries, AGM prep, and SGX announcement drafting. Pursuing IRC.'},
+  {id:6,name:'Derek Chew',init:'DC',bg:'#eff6ff',col:'#1d4ed8',role:'VP, Corp Comms & IR',company:'Keppel Corporation',yoe:11,avail:'passive',sector:'Conglomerate',skills:['Crisis Communications','Investor Day','ESG Integration','C-suite Briefing'],cert:'IRC (NIRI)',bio:'VP-level IR leader. Led 6 consecutive annual Investor Day events for Keppel. IRC certified with experience managing activist investor situations.'},
+];
+
+const EVENTS=[
+  {id:1,m:'MAY',d:8,title:'SGListCos Annual IR Forum 2026',desc:'Full-day conference: AI in IR, ESG disclosure updates, and the inaugural IR Best Practice Awards.',loc:'Marina Bay Sands',type:'Conference',joined:false},
+  {id:2,m:'MAY',d:21,title:'Earnings Season Debrief Workshop',desc:'Q1 earnings communication peer review. Breakout sessions on narrative framing and analyst alignment.',loc:'SGX Centre',type:'Workshop',joined:false},
+  {id:3,m:'JUN',d:3,title:'IRC Certification Info Session',desc:'IRC credential pathway. SGListCos Singapore-adapted certification in partnership with NIRI.',loc:'Virtual',type:'Webinar',joined:true},
+  {id:4,m:'JUN',d:17,title:'ESG Communication Masterclass',desc:'Led by REIT IR panel. GRI, TCFD, and SGX ESG disclosure with practical narrative exercises.',loc:'NUS Business School',type:'Masterclass',joined:false},
+];
+
+const NETWORK=[
+  {id:1,name:'Sandra Woo',init:'SW',bg:'#fdf4ff',col:'#7e22ce',role:'Head of IR',co:'Frasers Property',connected:true},
+  {id:2,name:'Alvin Yeo',init:'AY',bg:'#fff7ed',col:'#c2410c',role:'IRO',co:'Seatrium',connected:false},
+  {id:3,name:'Mei Lin Koh',init:'MK',bg:'#eff6ff',col:'#1d4ed8',role:'IR Manager',co:'OCBC Bank',connected:true},
+  {id:4,name:'Raj Pillai',init:'RP',bg:'#f0fdf4',col:'#166534',role:'CFO / IR',co:'Nanofilm',connected:false},
+  {id:5,name:'Grace Tan',init:'GT',bg:'#fef2f2',col:'#991b1b',role:'Senior IRO',co:'CA-REIT',connected:false},
+  {id:6,name:'Thomas Ng',init:'TN',bg:'#f0fdf4',col:'#166534',role:'IR Associate',co:'Lendlease REIT',connected:true},
+];
+
+const CASE_STUDIES=[
+  {id:1,cat:'Crisis IR',catTag:'tr',flag:'🇸🇬',company:'Singapore Airlines',year:2020,title:'Raising S$15.1bn During a Global Grounding: SIA\'s Rights Issue IR',body:'When COVID-19 grounded 96% of SIA\'s passenger fleet in April 2020, the airline executed one of Asia\'s largest-ever rights issues. The IR challenge was communicating an existential liquidity need without triggering a collapse in retail unitholder confidence — while simultaneously managing institutional lender expectations.',lessons:['Proactive scenario communication with institutional investors weeks before the public announcement prevented surprise and panic selling','Dedicated retail investor FAQ pages and plain-English explainers published alongside technical documents reduced AGM dissent significantly','Daily media briefings by the CFO and IR team maintained narrative control in a rapidly moving news cycle']},
+  {id:2,cat:'Restructuring',catTag:'ta',flag:'🇸🇬',company:'CapitaLand Group',year:2021,title:'The CapitaLand Restructuring: IR Through a Complex Corporate Transformation',body:'CapitaLand\'s 2021 restructuring — delisting the parent and listing CapitaLand Investment (CLI) — required IR teams to manage simultaneous communication to parent shareholders, CLI institutional pre-registrants, and existing REIT unitholders across six countries. The transition compressed what typically takes 18 months into a 6-month investor education process.',lessons:['Segmented investor communication strategy — different decks and messaging for institutional pre-IPO investors vs existing retail shareholders — reduced confusion and maintained trust across all groups','Weekly IR updates to top-20 institutional shareholders through the restructuring period are now considered a global best practice benchmark for complex delistings']},
+  {id:3,cat:'ESG Integration',catTag:'tgn',flag:'🇬🇧',company:'Unilever PLC',year:2022,title:'When ESG IR Backfired: Unilever\'s Overreach and the Activist Response',body:'Unilever\'s aggressive pivot to "purpose-led" IR messaging from 2020–2022 — placing ESG commitments at the centre of every investor communication — triggered a backlash from institutional investors led by Terry Smith of Fundsmith, who publicly criticised the company\'s focus on sustainability narratives over operational performance. The episode became a global case study in ESG IR calibration.',lessons:['ESG communication must be anchored in quantifiable financial impact — purpose without P&L connection is perceived as deflection by institutional investors','Activist pressure escalated directly from IR messaging failures: over-indexing on ESG without addressing margin underperformance created an opening for shareholder campaigns','The episode prompted NIRI and IRS UK to issue guidance on balancing ESG narrative with traditional financial communication']},
+  {id:4,cat:'Activist Defence',catTag:'tp',flag:'🇸🇬',company:'Keppel Corporation',year:2023,title:'Keppel\'s Transformation Narrative: IR as Activist Deterrent',body:'Following years of conglomerate discount pressure and a failed Temasek partial offer, Keppel\'s IR team — led by VP Group Communications & IR — built a sustained multi-year transformation narrative that pre-empted activist intervention. The strategy centred on transparent asset divestment timelines, recurring investor day events, and direct C-suite accessibility to top-20 institutional holders.',lessons:['Proactive transformation IR — communicating what the company will become before activists define it — reduced conglomerate discount from 40% to under 20% over 24 months','Annual Investor Day with pre-distributed 50-page strategy packs and live CEO Q&A set a Singapore benchmark for transparency that analysts cited as directly affecting target price upgrades']},
+  {id:5,cat:'Regulatory Change',catTag:'tn',flag:'🇮🇳',company:'Nifty 500 IR Community',year:2024,title:'India\'s SEBI LODR Reform: How Mandatory IRO Compliance Transformed a Market',body:'Following SEBI\'s amendment to the Listing Obligations and Disclosure Requirements (LODR) requiring all listed companies to appoint a Compliance Officer (de facto IRO) sitting no more than one level below the Board, 90% of Nifty 500 companies had dedicated IR professionals within 18 months. The reform created an overnight talent market for IR professionals and dramatically raised disclosure standards.',lessons:['Regulatory mandate is the single most effective catalyst for IR professionalisation — voluntary professionalization moves slowly, but compliance deadlines create immediate hiring demand','The reform created a talent shortage that lasted 3 years: companies with existing IR capability captured significant valuation premiums as institutional investors rewarded disclosure quality']},
+  {id:6,cat:'Crisis IR',catTag:'tr',flag:'🇩🇪',company:'Wirecard AG',year:2020,title:'Wirecard: The Definitive IR Governance Failure',body:'The collapse of Wirecard — Germany\'s largest-ever corporate fraud — was enabled in part by an IR function that actively managed sell-side sceptics, threatened journalists with legal action, and produced investor materials that obscured rather than disclosed. When the Financial Times investigation confirmed €1.9bn in missing cash, the IR narrative collapsed alongside the company.',lessons:['IR professionals have a legal and ethical obligation to accurate disclosure — IR that actively manages negative information rather than disclosing it creates criminal liability, not just reputational damage','Sell-side analysts who raised concerns were met with aggressive IR counter-messaging — a pattern now cited in MAS and FCA guidance on whistleblower protections and disclosure obligations','The case directly informed SGX\'s strengthened material disclosure practice notes and the MAS\'s 2023 review of disclosure officer responsibilities']},
+  {id:7,cat:'Capital Markets',catTag:'tb2',flag:'🇺🇸',company:'GameStop Corp',year:2021,title:'GameStop and the Retail IR Revolution: When the Internet Becomes Your Investor Base',body:'The 2021 GameStop short squeeze — driven by retail investors coordinating on Reddit\'s WallStreetBets — forced IR professionals globally to rethink retail investor communication. GameStop\'s IR team had no strategy for a 1,700% stock price move driven entirely by non-institutional actors, exposing the gap between traditional IR and modern retail investor engagement.',lessons:['C-suite executives are 3× more likely than IR practitioners to prioritise retail investor engagement — the GameStop event validated this gap and forced IR teams to build retail communication capabilities they never needed before','Social media monitoring is now a core IR competency: companies that tracked retail investor sentiment on Reddit and Discord had 48–72 hours of advance warning about the coordinated buying — IR teams with this monitoring avoided catastrophic communication missteps during the volatility']},
+  {id:8,cat:'REIT IR',catTag:'ta',flag:'🇸🇬',company:'Mapletree Industrial Trust',year:2023,title:'Expanding Beyond Singapore: Cross-Border IR for APAC REITs',body:'Mapletree Industrial Trust\'s expansion into US data centres required a fundamental shift in IR strategy — from a Singapore retail unitholder base familiar with manufacturing parks to institutional investors in New York and London who needed to understand APAC REIT structures, tax treaty implications, and SGX listing norms. The IR team built a dedicated cross-border investor programme from scratch.',lessons:['Tailored investor education materials — explaining SGX trust structures, distribution yield mechanics, and FX hedging policy in terms familiar to US REIT investors — reduced deal friction significantly and improved analyst coverage quality from international research houses','The programme established a model for APAC-listed REITs seeking international institutional recognition that has since been adopted by Frasers Logistics and CapitaLand Ascendas REIT']},
+];
+
+const ALL_COURSES=[
+  {id:1,ico:'📋',title:'SGX Listing Rules & Disclosure Obligations',provider:'SGX RegCo Academy',dur:'3 hrs',mods:5,level:'foundation',tag:'tg',prog:0,rec:true,desc:'Core compliance framework for IR professionals at SGX-listed companies. Covers material disclosure, simultaneous release rules, and announcement obligations.'},
+  {id:2,ico:'📊',title:'Financial Statements for IR Professionals',provider:'CFA Institute',dur:'4 hrs',mods:6,level:'foundation',tag:'tg',prog:0,rec:true,desc:'How to read, interpret, and communicate financial statements to both retail and institutional investors. Income statement, balance sheet, and cash flow focus.'},
+  {id:3,ico:'✍️',title:'Writing for Investors: Announcements & Reports',provider:'NUS Executive Education',dur:'3.5 hrs',mods:5,level:'foundation',tag:'tg',prog:40,rec:true,desc:'Plain-English investor communication skills. Annual report writing, SGX announcement drafting, and earnings release structure. Includes peer review exercises.'},
+  {id:4,ico:'🤝',title:'AGM Preparation & Unitholder Engagement',provider:'SGListCos',dur:'2 hrs',mods:4,level:'foundation',tag:'tg',prog:0,rec:false,desc:'End-to-end AGM planning, proxy advisor engagement, and handling challenging shareholder questions. Practical checklists and run-of-show templates included.'},
+  {id:5,ico:'🏅',title:'IRC Certification Programme',provider:'NIRI (via TIRI partnership)',dur:'40 hrs',mods:5,level:'intermediate',tag:'tb2',prog:78,rec:true,desc:'The global gold standard for IR credentialing. Covers disclosure law, investor communication, financial analysis for IR, and the strategic IR function. Exam-based.'},
+  {id:6,ico:'🌿',title:'ESG Communication & Reporting for IROs',provider:'GRI Academy / SGListCos',dur:'5 hrs',mods:7,level:'intermediate',tag:'tb2',prog:0,rec:true,desc:'GRI Standards, TCFD, and SGX ESG disclosure requirements. How to integrate sustainability narrative into investor presentations, earnings calls, and annual reports.'},
+  {id:7,ico:'🎯',title:'Investor Targeting & CRM Strategies',provider:'Irwin Analytics / SGListCos',dur:'4 hrs',mods:6,level:'intermediate',tag:'tb2',prog:33,rec:true,desc:'Data-driven investor targeting: building an ideal investor profile, using CRM tools, running targeting campaigns, and measuring conversion rates.'},
+  {id:8,ico:'📣',title:'Earnings Call Mastery',provider:'SGListCos / NIRI',dur:'3 hrs',mods:5,level:'intermediate',tag:'tb2',prog:0,rec:false,desc:'Full earnings call simulation: CFO script preparation, management Q&A coaching, analyst expectation management, and post-call follow-up protocols.'},
+  {id:9,ico:'📜',title:'IRS Certificate in Investor Relations',provider:'Investor Relations Society (UK)',dur:'30 hrs',mods:8,level:'intermediate',tag:'tb2',prog:100,rec:false,desc:'UK-accredited IR credential. Regulatory compliance, crisis communication, and stakeholder management. Internationally recognised with CPD renewal requirements.'},
+  {id:10,ico:'⚡',title:'Strategic IR Leadership Programme',provider:'NIRI Executive / SGListCos',dur:'12 hrs',mods:8,level:'advanced',tag:'ta',prog:0,rec:true,desc:'For senior IROs and IR heads. Covers board-level IR integration, IR strategy development, C-suite alignment, and building an IR function from scratch.'},
+  {id:11,ico:'🛡️',title:'Activist Investor Preparedness',provider:'FTI Consulting / SGListCos',dur:'4 hrs',mods:5,level:'advanced',tag:'ta',prog:0,rec:true,desc:'How to identify activist accumulation signals, build an IR defence playbook, manage board communications during activist situations, and engage proxy advisors.'},
+  {id:12,ico:'🔥',title:'Crisis Communications for Senior IROs',provider:'Brunswick Group',dur:'3 hrs',mods:4,level:'advanced',tag:'ta',prog:0,rec:true,desc:'Managing IR during financial restatements, earnings misses, regulatory investigations, and ESG controversies. Includes live simulation with a crisis media panel.'},
+  {id:13,ico:'🏦',title:'IR for M&A, Rights Issues & Restructuring',provider:'Goldman Sachs IR Academy',dur:'6 hrs',mods:7,level:'advanced',tag:'ta',prog:0,rec:false,desc:'Capital markets transactions from an IR perspective: managing investor communication during rights issues, mergers, delistings, and corporate spin-offs.'},
+  {id:14,ico:'🎙️',title:'Board-Level IR Integration',provider:'Institute of Directors / SGListCos',dur:'3 hrs',mods:4,level:'advanced',tag:'ta',prog:0,rec:false,desc:'How to present IR strategy to the board, build IR reporting dashboards for C-suite, and position the IR function as a strategic business asset.'},
+];
+
+const CERTS_DATA=[
+  {ico:'🏅',bg:'#fffbeb',title:'IRC — Investor Relations Charter',issuer:'NIRI (National Investor Relations Institute)',prog:78,status:'In progress',col:'#f59e0b',detail:'Module 3 of 5 complete. Next: Regulation FD & Disclosure Obligations. Exam window: Oct 2026.',enrolled:true},
+  {ico:'📜',bg:'#eff6ff',title:'IRS Certificate in Investor Relations',issuer:'Investor Relations Society (United Kingdom)',prog:100,status:'Completed',col:'#10b981',detail:'Completed April 2024. CPD renewal due April 2026. Equivalent to 40 CPD hours.',enrolled:true},
+  {ico:'🌿',bg:'#f0fdf4',title:'ESG Reporting Fundamentals',issuer:'SGListCos Learning Track',prog:0,status:'Not started',col:'#94a3b8',detail:'GRI Standards, TCFD, and SGX ESG disclosure requirements. Self-paced, 8 modules.',enrolled:false},
+];
+
+const JOURNALS=[
+  {id:1,date:'8 Apr 2026',title:'Earnings call prep reflections',prev:'Key lesson on narrative alignment...',body:'Spent the morning reviewing how we framed Q1 results vs analyst expectations. Key lesson: the CFO\'s opening narrative needs to front-load the strategic context before touching numbers. Analysts respond better when they understand the "why" before the "what".\n\nAlso flagged to CFO that we should build a standing slide on cost of capital movement — several buy-side analysts asked follow-up questions we weren\'t prepared for.',tags:['Earnings','Narrative','CFO Alignment']},
+  {id:2,date:'1 Apr 2026',title:'ESG Masterclass notes — NUS',prev:'Three frameworks stood out...',body:'Three frameworks from today\'s NUS session:\n\n1. Materiality matrix — map ESG issues against financial impact and stakeholder concern. We haven\'t done this formally.\n\n2. Narrative arc for sustainability — lead with commitment, then evidence, then aspiration. We currently do it in reverse.\n\n3. Proxy advisor alignment — Glass Lewis and ISS both weigh board diversity heavily. Flag for next AGM prep.',tags:['ESG','Learning','AGM']},
+  {id:3,date:'22 Mar 2026',title:'Peer call with Sandra (Frasers)',prev:'Discussed investor day format...',body:'Sandra shared how Frasers structures their Investor Day — 3-hour format, pre-read 48hrs ahead, no live Q&A surprises. They rehearse twice with the CEO.\n\nInteresting: they\'ve moved to a hybrid model with a dedicated IR portal for institutional investors to submit questions in advance. Worth pitching to our CFO for our September event.',tags:['Networking','Investor Day','Best Practice']},
+];
+
+const SEED_QS=[
+  'What are Singapore\'s SGX material disclosure requirements for listed companies?',
+  'Does Singapore require listed companies to appoint a dedicated IRO?',
+  'What is the quiet period rule for SGX-listed companies before earnings?',
+  'What are Singapore\'s ESG disclosure requirements under SGX listing rules?',
+  'How does the Securities and Futures Act affect IR professionals in Singapore?',
+  'What are the SGX rules on simultaneous disclosure and Reg FD equivalents?',
+  'Best practices for AGM preparation under Singapore\'s Companies Act?',
+  'How should I handle analyst briefings to comply with SGX rules?',
+  'What are the MAS guidelines on selective disclosure for listed companies?',
+];
+
+const AI_SYS=`You are an expert in Singapore investor relations law, SGX regulations, and global IR best practices. Help IR professionals at SGX-listed companies understand their regulatory obligations and how to develop their IR function.
+
+Your knowledge covers: SGX Mainboard Listing Rules, SGX Catalist Rules, Securities and Futures Act (SFA) Chapter 289, Companies Act Singapore, MAS guidelines, SGX Practice Notes on investor communications, and global IR frameworks from NIRI, IRS UK, HKIRA, and SEBI India.
+
+Be practical and precise. Always reference the relevant rule or regulation where applicable. Keep responses structured with clear paragraphs. Use bullet points only for lists of 3+ discrete items.`;
+
+const TIPS_DATA=[
+  {ico:'🔍',bg:'#eff6ff',title:'Identifying IR Talent',sub:'Sourcing & screening',items:['Look beyond finance — communications graduates often make exceptional IROs','Assess narrative fluency: can the candidate explain a balance sheet to a retail investor in plain English?','Test for investor empathy: ask candidates what a sell-side analyst actually needs from an IRO','Review prior written work — earnings releases, investor presentations, or annual report sections','IRC or IRS certification signals genuine professional commitment; weight it meaningfully']},
+  {ico:'🔄',bg:'#f0fdf4',title:'Succession Planning',sub:'Continuity & handover',items:['Map all key investor relationships to at least two named individuals — never just one','Document institutional knowledge: investor preferences, relationship history, quiet period protocols','Identify internal successors at least 12 months before any anticipated departure','Create a 90-day onboarding plan — knowledge transfer requires deliberate time and documentation','Even a 2-page Investor Relationship Register reduces key-person risk at small-cap companies']},
+  {ico:'📋',bg:'#fff7ed',title:'Role Design & JD Best Practice',sub:'Setting up for success',items:['Define clear reporting lines — ideally the IRO has direct CFO access, not three layers of comms','Specify competencies, not just tasks: financial modelling, ESG literacy, media handling, crisis comms','Avoid permanent dual-role IR positions at mid- or large-cap companies — dedicated IR reduces risk','Include KPI expectations in the JD: event metrics, targeting conversion, cost of capital proxy','Reference the SGListCos Competency Framework when writing JDs']},
+  {ico:'⚠️',bg:'#fef2f2',title:'Key-Person Risk Checklist',sub:'Reduce single-POC exposure',items:['Is the entire investor relationship held by one person? Document it before it becomes a crisis','Are investor contact details and meeting notes in a shared CRM — not a personal inbox?','Has the CFO/CEO been briefed directly on the top 10 institutional relationships?','Is there a named backup contact for all SGX compliance and announcement processes?','Review succession readiness annually at the board level, not just within the finance team']},
+  {ico:'🌏',bg:'#f0fdf4',title:'Global Benchmark Lessons',sub:'What Singapore can learn',items:['India (Nifty 500): 90% dedicated IRO adoption driven by SEBI LODR — regulatory mandate is the fastest catalyst','UAE: explicit IRO mandate exists but 37% still lack board access — mandate ≠ strategic integration','US: relay succession model (documented, structured handover) is the global gold standard','UK IRS: CPD accreditation creates a qualified practitioner pipeline — the Singapore equivalent is the next step','Taiwan: 54% lack formal succession plans despite governance reform — Singapore is not alone but must act']},
+  {ico:'📊',bg:'#fdf4ff',title:'IR KPI Framework',sub:'Measuring effectiveness',items:['Tier 1 Foundation: event participation, analyst coverage count, investor touchpoints per quarter','Tier 2 Impact: targeting conversion rate, analyst estimate accuracy, stock volatility vs sector','Tier 3 Strategic: cost of capital proxy, relative valuation trend, shareholder composition shift','33% of IR teams globally operate without formal KPIs — a governance failure, not just an IR problem','Establish quarterly KPI reviews between IRO and CFO; 50% of C-suite has no visibility into IR effectiveness']},
+];
+
+function App(){
+  const [screen,setScreen]=useState('login');
+  const [role,setRole]=useState(null);
+  const [tab,setTab]=useState('');
+  const [pid,setPid]=useState(1);
+  const [profiles,setProfiles]=useState(INIT_PROFILES);
+  const [search,setSearch]=useState('');
+  const [sector,setSector]=useState('All');
+  const [avail,setAvail]=useState('All');
+  const [events,setEvents]=useState(EVENTS);
+  const [network,setNetwork]=useState(NETWORK);
+  const [modal,setModal]=useState(null);
+  const [editOpen,setEditOpen]=useState(false);
+  const [aj,setAj]=useState(1);
+
+  function login(r){setRole(r);setTab(r==='hr'?'talent':'profile');setScreen('app')}
+  function logout(){setScreen('login');setRole(null)}
+  const profile=profiles[pid];
+  function saveProfile(p){setProfiles(pp=>({...pp,[pid]:p}))}
+
+  const filtered=CANDIDATES.filter(c=>{
+    const s=search.toLowerCase();
+    const ms=!s||c.name.toLowerCase().includes(s)||c.role.toLowerCase().includes(s)||c.company.toLowerCase().includes(s)||c.skills.some(sk=>sk.toLowerCase().includes(s));
+    return ms&&(sector==='All'||c.sector===sector)&&(avail==='All'||(avail==='Open'&&c.avail==='open')||(avail==='Passive'&&c.avail==='passive'));
+  });
+
+  const HR_TABS=[{id:'talent',l:'Talent Database',i:'👥'},{id:'post',l:'Post a Role',i:'📝'},{id:'tips',l:'Tips & Guidance',i:'💡'}];
+  const IR_TABS=[{id:'profile',l:'My Profile',i:'👤'},{id:'network',l:'Networking & Events',i:'🌐'},{id:'cases',l:'Case Studies',i:'📰'},{id:'journal',l:'Learning Journal',i:'📔'},{id:'ai',l:'AI Assistant',i:'🤖'},{id:'certs',l:'Courses & Certs',i:'🏅'}];
+  const TABS=role==='hr'?HR_TABS:IR_TABS;
+
+  if(screen==='login')return h(Login,{onLogin:login});
+
+  return h('div',{className:'app'},
+    h('nav',{className:'topnav'},
+      h('div',{className:'brand'},h('div',{className:'bdot'}),'SGListCos IR Platform'),
+      h('div',{className:'nav-r'},
+        role==='ir'&&h('div',{className:'psw'},
+          h('button',{className:`psw-btn${pid===1?' active':''}`,onClick:()=>setPid(1)},'Rachel Phua'),
+          h('button',{className:`psw-btn${pid===2?' active':''}`,onClick:()=>setPid(2)},'Marcus Tan')
+        ),
+        h('span',{className:`rbadge ${role==='hr'?'rb-hr':'rb-ir'}`},role==='hr'?'HR / Company':'IR Professional'),
+        h('div',{className:`ava ${role==='hr'?'ava-hr':'ava-ir'}`},role==='hr'?'HR':profile.init),
+        h('button',{className:'bso',onClick:logout},'Sign out')
+      )
+    ),
+    h('div',{className:'tabbar'},TABS.map(t=>h('button',{key:t.id,className:`tb${tab===t.id?' '+(role==='hr'?'ahr':'air'):''}`,onClick:()=>setTab(t.id)},h('span',null,t.i),' ',t.l))),
+    h('div',{className:'main'},
+      tab==='talent'&&h(TalentTab,{filtered,search,setSearch,sector,setSector,avail,setAvail,setModal}),
+      tab==='post'&&h(PostRoleTab,null),
+      tab==='tips'&&h(TipsTab,null),
+      tab==='profile'&&h(ProfileTab,{profile,onEdit:()=>setEditOpen(true)}),
+      tab==='network'&&h(NetworkTab,{profile,events,setEvents,network,setNetwork}),
+      tab==='cases'&&h(CasesTab,null),
+      tab==='journal'&&h(JournalTab,{aj,setAj}),
+      tab==='ai'&&h(AITab,null),
+      tab==='certs'&&h(CertsTab,{profile})
+    ),
+    modal&&h(CandModal,{c:modal,onClose:()=>setModal(null)}),
+    editOpen&&h(EditProfileModal,{profile,onSave:(p)=>{saveProfile(p);setEditOpen(false)},onClose:()=>setEditOpen(false)})
+  );
+}
+
+function Login({onLogin}){
+  return h('div',{className:'lw'},
+    h('div',{style:{width:'100%',maxWidth:780}},
+      h('div',{className:'llogo'},
+        h('h1',null,'SGListCos IR Talent Platform'),
+        h('p',null,'Investor Relations Workforce Infrastructure · Singapore Listed Companies'),
+        h('div',{style:{textAlign:'center'}},h('div',{className:'lbadge'},'ASSOCIATION OF SINGAPORE LISTED COMPANIES'))
+      ),
+      h('div',{className:'lrow'},
+        h('div',{className:'lcard hr'},
+          h('div',{className:'lcard-ico'},'🏢'),
+          h('h3',null,'HR & Company'),
+          h('p',{className:'lsub'},'Manage your IR talent pipeline, post roles, and access succession guidance.'),
+          h('ul',null,h('li',null,'Browse and shortlist verified IR professionals'),h('li',null,'Post open roles and track applications'),h('li',null,'Hiring tips and succession planning frameworks')),
+          h('button',{className:'lbtn hr',onClick:()=>onLogin('hr')},'Sign in as HR / Company →')
+        ),
+        h('div',{className:'lcard ir'},
+          h('div',{className:'lcard-ico'},'👤'),
+          h('h3',null,'IR Professional'),
+          h('p',{className:'lsub'},'Build your profile, learn from global case studies, and grow your IR career.'),
+          h('ul',null,h('li',null,'Create and edit your IR professional profile'),h('li',null,'Access IR case studies and the AI assistant'),h('li',null,'Track certifications and complete courses')),
+          h('button',{className:'lbtn ir',onClick:()=>onLogin('ir')},'Sign in as IR Professional →')
+        )
+      )
+    )
+  );
+}
+
+/* ===== HR ===== */
+function TalentTab({filtered,search,setSearch,sector,setSector,avail,setAvail,setModal}){
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Talent Database'),h('p',null,'Browse verified IR professionals. Contact details unlocked after a formal introduction request.')),h('button',{className:'btn bgo'},'Export shortlist')),
+    h('div',{className:'sr'},
+      h('div',{className:'sb'},h('div',{className:'sv'},'143'),h('div',{className:'sl'},'Registered'),h('div',{className:'sc'},'↑ 12 this month')),
+      h('div',{className:'sb'},h('div',{className:'sv'},'38'),h('div',{className:'sl'},'Open to roles'),h('div',{className:'sc'},'↑ 5 this week')),
+      h('div',{className:'sb'},h('div',{className:'sv'},'67'),h('div',{className:'sl'},'IRC / IRS certified'),h('div',{className:'sc'},'↑ 3 new')),
+      h('div',{className:'sb'},h('div',{className:'sv'},'24'),h('div',{className:'sl'},'Active listings'),h('div',{className:'sc'},'↑ 2 this week'))
+    ),
+    h('div',{className:'sbar'},
+      h('input',{type:'text',placeholder:'Search name, role, company, or skill...',value:search,onChange:e=>setSearch(e.target.value)}),
+      h('select',{value:sector,onChange:e=>setSector(e.target.value)},['All','REIT','Banking','Industrial','Conglomerate'].map(s=>h('option',{key:s,value:s},s==='All'?'All sectors':s))),
+      h('select',{value:avail,onChange:e=>setAvail(e.target.value)},h('option',{value:'All'},'All availability'),h('option',{value:'Open'},'Open to roles'),h('option',{value:'Passive'},'Passive only'))
+    ),
+    h('div',{className:'cgrid'},
+      filtered.map(c=>h('div',{key:c.id,className:'ccard',onClick:()=>setModal(c)},
+        h('div',{className:'ctx'},h('div',{className:'cav',style:{background:c.bg,color:c.col}},c.init),h('div',null,h('div',{className:'cn'},c.name),h('div',{className:'cr'},c.role))),
+        h('div',{className:'tr2'},h('span',{className:'tag tg'},c.company),h('span',{className:'tag tb2'},c.sector),c.cert&&c.cert!=='—'&&h('span',{className:'tag ta'},c.cert)),
+        h('div',{className:'skr'},c.skills.slice(0,3).map(s=>h('span',{key:s,className:'stag'},s)),c.skills.length>3&&h('span',{className:'stag'},'+'+( c.skills.length-3))),
+        h('div',{className:'cf'},h('span',{className:'av'},h('span',{className:`adot ${c.avail==='open'?'ado':'adp'}`}),c.avail==='open'?'Open to roles':'Passive'),h('span',{className:'btn bn',style:{fontSize:11,padding:'3px 10px'}},'View Profile'))
+      )),
+      filtered.length===0&&h('div',{style:{color:'var(--muted)',fontSize:13,gridColumn:'1/-1',padding:'2rem',textAlign:'center',fontWeight:300}},'No profiles match your search.')
+    )
+  );
+}
+
+function PostRoleTab(){
+  const [roles]=useState([{id:1,title:'Senior Investor Relations Officer',dept:'Finance & IR',loc:'Singapore',type:'Full-time',posted:'3 days ago',apps:7},{id:2,title:'IR Associate (12-month contract)',dept:'Corporate Affairs',loc:'Singapore',type:'Contract',posted:'1 week ago',apps:12}]);
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Post a Role'),h('p',null,'Create IR role listings visible to all registered IR professionals on the SGListCos platform.'))),
+    h('div',{className:'pform'},
+      h('div',{className:'f2'},h('div',{className:'ff'},h('label',null,'Job title'),h('input',{type:'text',placeholder:'e.g. Senior Investor Relations Officer'})),h('div',{className:'ff'},h('label',null,'Department'),h('input',{type:'text',placeholder:'e.g. Finance & IR'}))),
+      h('div',{className:'f2'},h('div',{className:'ff'},h('label',null,'Employment type'),h('select',null,h('option',null,'Full-time'),h('option',null,'Contract'),h('option',null,'Part-time'))),h('div',{className:'ff'},h('label',null,'Seniority'),h('select',null,h('option',null,'Associate'),h('option',null,'Manager'),h('option',null,'Senior / VP'),h('option',null,'Head / Director')))),
+      h('div',{className:'f2'},h('div',{className:'ff'},h('label',null,'Min. experience (years)'),h('input',{type:'number',placeholder:'e.g. 4',min:0})),h('div',{className:'ff'},h('label',null,'Preferred certification'),h('select',null,h('option',null,'No preference'),h('option',null,'IRC (NIRI)'),h('option',null,'IRS Certificate'),h('option',null,'CPA / CFA')))),
+      h('div',{className:'ff'},h('label',null,'Role description'),h('textarea',{placeholder:'Describe responsibilities, reporting lines, investor base, and IR scope...'})),
+      h('div',{className:'f2'},h('div',{className:'ff'},h('label',null,'Application deadline'),h('input',{type:'date'})),h('div',{className:'ff'},h('label',null,'IR function type'),h('select',null,h('option',null,'Dedicated IR role'),h('option',null,'Dual: IR + Finance'),h('option',null,'Dual: IR + Comms')))),
+      h('div',{style:{display:'flex',gap:'.5rem',marginTop:'.5rem'}},h('button',{className:'btn bn'},'Publish listing'),h('button',{className:'btn bo'},'Save as draft'))
+    ),
+    h('div',{className:'sh'},'Active listings'),
+    roles.map(r=>h('div',{key:r.id,className:'rrow'},h('div',null,h('h5',null,r.title),h('p',null,r.dept,' · ',r.loc,' · ',r.type,' · Posted ',r.posted)),h('div',{style:{display:'flex',gap:'.4rem',alignItems:'center',flexShrink:0}},h('span',{className:'tag tb2'},r.apps,' applicants'),h('button',{className:'btn bo',style:{fontSize:11}},'View'),h('button',{className:'btn bn',style:{fontSize:11}},'Manage'))))
+  );
+}
+
+function TipsTab(){
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Tips & Guidance'),h('p',null,'Curated guidance on IR hiring, succession planning, and talent management for SGListCos member companies.'))),
+    h('div',{className:'tipsgrid'},TIPS_DATA.map((t,i)=>h('div',{key:i,className:'tipc'},h('div',{className:'tiph'},h('div',{className:'tipico',style:{background:t.bg}},t.ico),h('div',null,h('h4',null,t.title),h('div',{className:'tsu'},t.sub))),h('ul',null,t.items.map((x,j)=>h('li',{key:j},x))))))
+  );
+}
+
+/* ===== IR ===== */
+function ProfileTab({profile,onEdit}){
+  const lvlCol={'open':'#0f9b6e','passive':'#f59e0b','closed':'#ef4444'};
+  const lvlLabel={'open':'Open to roles','passive':'Passively looking','closed':'Not looking'};
+  const lvlTag={'open':'tgn','passive':'ta','closed':'tr'};
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'My Profile'),h('p',null,'Your profile is visible to HR representatives at SGListCos member companies.')),h('button',{className:'btn bg',onClick:onEdit},'✏️ Edit Profile')),
+    h('div',{className:'pl'},
+      h('div',{className:'pside'},
+        h('div',{className:'pavc'},
+          h('div',{className:'pav',style:{background:profile.avBg,color:profile.avCol}},profile.init),
+          h('h3',null,profile.name),
+          h('div',{className:'pt'},profile.title),
+          h('div',{className:'pco'},profile.company),
+          h('div',{style:{display:'flex',justifyContent:'center',marginTop:'.5rem'}},h('span',{className:`tag ${lvlTag[profile.avail]}`},lvlLabel[profile.avail])),
+          h('div',{className:'pbar-wrap'},h('div',{className:'pbar'},h('div',{className:'pfill',style:{width:profile.completeness+'%'}})),h('span',{className:'plbl'},profile.completeness+'%')),
+          h('div',{className:'pstats'},
+            h('div',{className:'pstat'},h('div',{className:'psv'},profile.yoe),h('div',{className:'psl'},'Years exp.')),
+            h('div',{className:'pstat'},h('div',{className:'psv'},profile.skills.length),h('div',{className:'psl'},'Skills listed')),
+            h('div',{className:'pstat'},h('div',{className:'psv'},profile.certs.length||'—'),h('div',{className:'psl'},'Certs held')),
+            h('div',{className:'pstat'},h('div',{className:'psv'},profile.sector),h('div',{className:'psl'},'Sector'))
+          ),
+          h('div',{className:'pacts'},h('button',{className:'btn bn',style:{width:'100%',justifyContent:'center'},onClick:onEdit},'Edit Profile'),h('button',{className:'btn bo',style:{width:'100%',justifyContent:'center'}},'Download Profile PDF'))
+        )
+      ),
+      h('div',{className:'psecs'},
+        h('div',{className:'psec'},h('div',{className:'psh'},h('h4',null,'Professional Summary'),h('button',{className:'ebtn',onClick:onEdit},'Edit')),h('p',{style:{fontSize:13,color:'#334155',fontWeight:300,lineHeight:1.7}},profile.bio)),
+        h('div',{className:'psec'},
+          h('div',{className:'psh'},h('h4',null,'Experience & Role'),h('button',{className:'ebtn',onClick:onEdit},'Edit')),
+          h('div',{className:'ei'},h('h5',null,profile.title),h('p',null,profile.company,' · ',profile.sector,' sector'),h('div',{className:'ep'},profile.yoe,' years in Investor Relations · Role type: ',profile.roleType))
+        ),
+        h('div',{className:'psec'},
+          h('div',{className:'psh'},h('h4',null,'Key Skills'),h('button',{className:'ebtn',onClick:onEdit},'Edit')),
+          h('div',{className:'skr',style:{flexWrap:'wrap'}},profile.skills.map(s=>h('span',{key:s,className:'stag',style:{fontSize:12,padding:'3px 9px'}},s)))
+        ),
+        h('div',{className:'psec'},
+          h('div',{className:'psh'},h('h4',null,'Certifications & Education'),h('button',{className:'ebtn',onClick:onEdit},'Edit')),
+          profile.certs.length>0?profile.certs.map((c,i)=>h('div',{key:i,className:'ei'},h('h5',null,c))):h('p',{style:{fontSize:13,color:'var(--muted)',fontWeight:300}},'No certifications on file — explore the Courses & Certs tab to get started.'),
+          h('div',{className:'ei'},h('h5',null,profile.education||'Not provided'))
+        ),
+        profile.linkedin&&h('div',{className:'psec'},h('div',{className:'psh'},h('h4',null,'Contact & Links'),h('button',{className:'ebtn',onClick:onEdit},'Edit')),h('p',{style:{fontSize:13,color:'#1d4ed8',fontWeight:300}},profile.linkedin))
+      )
+    )
+  );
+}
+
+function EditProfileModal({profile,onSave,onClose}){
+  const [p,setP]=useState({...profile});
+  const [newSkill,setNewSkill]=useState('');
+  function upd(k,v){setP(x=>({...x,[k]:v}))}
+  function addSkill(){if(newSkill.trim()&&!p.skills.includes(newSkill.trim())){upd('skills',[...p.skills,newSkill.trim()]);setNewSkill('')}}
+  function rmSkill(s){upd('skills',p.skills.filter(x=>x!==s))}
+  const completion=Math.round(20+(p.bio?15:0)+(p.yoe?10:0)+(p.skills.length>3?15:p.skills.length*3)+(p.certs.length>0?15:0)+(p.education?10:0)+(p.linkedin?5:0));
+  return h('div',{className:'mo',onClick:onClose},
+    h('div',{className:'md',onClick:e=>e.stopPropagation()},
+      h('div',{className:'md-hd'},h('h3',null,'Edit Profile'),h('button',{className:'mdc',onClick:onClose},'×')),
+      h('div',{className:'f2'},
+        h('div',{className:'ff'},h('label',null,'Full name'),h('input',{type:'text',value:p.name,onChange:e=>upd('name',e.target.value)})),
+        h('div',{className:'ff'},h('label',null,'Current designation'),h('input',{type:'text',value:p.title,onChange:e=>upd('title',e.target.value)}))
+      ),
+      h('div',{className:'f2'},
+        h('div',{className:'ff'},h('label',null,'Company'),h('input',{type:'text',value:p.company,onChange:e=>upd('company',e.target.value)})),
+        h('div',{className:'ff'},h('label',null,'Sector'),h('select',{value:p.sector,onChange:e=>upd('sector',e.target.value)},...['Banking','REIT','Industrial','Conglomerate','Technology','Healthcare','Consumer','Energy'].map(s=>h('option',{key:s,value:s},s))))
+      ),
+      h('div',{className:'f2'},
+        h('div',{className:'ff'},h('label',null,'Years of experience in IR'),h('input',{type:'number',value:p.yoe,min:0,max:50,onChange:e=>upd('yoe',parseInt(e.target.value)||0)})),
+        h('div',{className:'ff'},h('label',null,'IR role type'),h('select',{value:p.roleType,onChange:e=>upd('roleType',e.target.value)},...['Dedicated IRO','Dual Role: IR + Finance','Dual Role: IR + Comms','IR Consultant','Acting IRO'].map(x=>h('option',{key:x,value:x},x))))
+      ),
+      h('div',{className:'ff'},h('label',null,'Professional bio'),h('textarea',{value:p.bio,onChange:e=>upd('bio',e.target.value),placeholder:'Describe your IR experience, sector expertise, and career goals...'})),
+      h('div',{className:'ff'},
+        h('label',null,'Key skills'),
+        h('div',{className:'skill-chips'},
+          p.skills.map(s=>h('span',{key:s,className:'schip'},s,h('button',{className:'schip-x',onClick:()=>rmSkill(s)},'×'))),
+          h('div',{style:{display:'flex',gap:4,marginTop:4}},
+            h('input',{type:'text',placeholder:'Add skill...',value:newSkill,onChange:e=>setNewSkill(e.target.value),onKeyDown:e=>e.key==='Enter'&&addSkill(),style:{flex:1,padding:'3px 8px',border:'1px solid var(--border)',borderRadius:8,fontSize:12}}),
+            h('button',{className:'schip-add',onClick:addSkill},'+ Add')
+          )
+        )
+      ),
+      h('div',{className:'ff'},h('label',null,'Certifications held (one per line)'),h('textarea',{style:{minHeight:60},value:p.certs.join('\n'),onChange:e=>upd('certs',e.target.value.split('\n').filter(x=>x.trim())),placeholder:'e.g. IRC (NIRI, 2025)\nIRS Certificate (UK, 2024)'})),
+      h('div',{className:'f2'},
+        h('div',{className:'ff'},h('label',null,'Education'),h('input',{type:'text',value:p.education,onChange:e=>upd('education',e.target.value),placeholder:'e.g. B.Accountancy, NUS (2018)'})),
+        h('div',{className:'ff'},h('label',null,'LinkedIn URL'),h('input',{type:'text',value:p.linkedin,onChange:e=>upd('linkedin',e.target.value),placeholder:'linkedin.com/in/yourname'}))
+      ),
+      h('div',{className:'ff'},
+        h('label',null,'Availability status'),
+        h('div',{className:'avail-opts'},
+          h('button',{className:`aopt${p.avail==='open'?' sel':''}`,onClick:()=>upd('avail','open')},'Open to roles'),
+          h('button',{className:`aopt${p.avail==='passive'?' sel':''}`,onClick:()=>upd('avail','passive')},'Passively looking'),
+          h('button',{className:`aopt${p.avail==='closed'?' sel':''}`,onClick:()=>upd('avail','closed')},'Not looking')
+        )
+      ),
+      h('div',{style:{background:'#f8f7f3',borderRadius:8,padding:'.75rem',marginBottom:'.875rem',fontSize:12,color:'var(--muted)'}},
+        'Projected profile completeness after save: ',h('strong',{style:{color:completion>=75?'#0f9b6e':completion>=50?'#f59e0b':'#ef4444'}},completion,'%')
+      ),
+      h('div',{style:{display:'flex',gap:'.5rem'}},
+        h('button',{className:'btn bg',style:{flex:1},onClick:()=>onSave({...p,completeness:completion})},'Save changes'),
+        h('button',{className:'btn bo',style:{flex:1},onClick:onClose},'Cancel')
+      )
+    )
+  );
+}
+
+function NetworkTab({profile,events,setEvents,network,setNetwork}){
+  function toggleJoin(id){setEvents(ev=>ev.map(e=>e.id===id?{...e,joined:!e.joined}:e))}
+  function toggleConn(id){setNetwork(n=>n.map(p=>p.id===id?{...p,connected:!p.connected}:p))}
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Networking & Events'),h('p',null,'Register for events and connect with peer IR professionals.'))),
+    h('div',{className:'card',style:{padding:'1.125rem',display:'flex',alignItems:'center',gap:'1rem',flexWrap:'wrap',marginBottom:'1.125rem'}},
+      h('div',{className:'pav',style:{background:profile.avBg,color:profile.avCol,width:54,height:54,flexShrink:0}},profile.init),
+      h('div',{style:{flex:1,minWidth:160}},
+        h('h3',{style:{fontFamily:'Playfair Display,serif',fontSize:15,color:'var(--navy)'}},profile.name),
+        h('p',{style:{fontSize:12,color:'var(--muted)',fontWeight:300,marginTop:2}},profile.title,' · ',profile.company),
+        h('div',{style:{display:'flex',alignItems:'center',gap:6,marginTop:5}},h('div',{className:'pbar',style:{width:120}},h('div',{className:'pfill',style:{width:profile.completeness+'%'}})),h('span',{style:{fontSize:11,color:'var(--muted)'}},profile.completeness+'% complete'))
+      ),
+      h('span',{className:'tag tgn',style:{padding:'5px 10px',fontSize:12}},profile.avail==='open'?'● Open to roles':profile.avail==='passive'?'● Passive':'● Not looking')
+    ),
+    h('div',{className:'sh'},'Upcoming events'),
+    events.map(e=>h('div',{key:e.id,className:'evc'},h('div',{className:'edt'},h('div',{className:'em'},e.m),h('div',{className:'ed'},e.d)),h('div',{className:'ei2'},h('h4',null,e.title),h('p',null,e.desc),h('div',{className:'em2'},h('span',null,'📍 ',e.loc),h('span',null,'🏷️ ',e.type))),h('button',{className:`breg${e.joined?' jd':''}`,onClick:()=>toggleJoin(e.id)},e.joined?'✓ Registered':'Register'))),
+    h('div',{className:'sh'},'Connect with IR peers'),
+    h('div',{className:'ng'},network.map(p=>h('div',{key:p.id,className:'nc'},h('div',{className:'nca',style:{background:p.bg,color:p.col}},p.init),h('h5',null,p.name),h('div',{className:'nr'},p.role),h('div',{className:'nco'},p.co),h('button',{className:`bcn${p.connected?' cn':''}`,onClick:()=>!p.connected&&toggleConn(p.id)},p.connected?'✓ Connected':'Connect'))))
+  );
+}
+
+function CasesTab(){
+  const [active,setActive]=useState(null);
+  const CAT_COLORS={'Crisis IR':'tr','Restructuring':'ta','ESG Integration':'tgn','Activist Defence':'tp','Regulatory Change':'tn','Capital Markets':'tb2','REIT IR':'ta'};
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Case Studies & IR News'),h('p',null,'Real-world IR situations, governance events, and lessons from Singapore and global markets.'))),
+    h('div',{className:'csgrid'},
+      CASE_STUDIES.map(cs=>h('div',{key:cs.id,className:'cscard',onClick:()=>setActive(cs)},
+        h('div',{className:'cs-top'},h('div',null,h('span',{className:`tag ${CAT_COLORS[cs.cat]||'tg'}`},cs.cat),h('div',{className:'cs-co'},cs.flag,' ',cs.company,' · ',cs.year)),h('span',{style:{fontSize:16}},'→')),
+        h('h3',{className:'cs-title'},cs.title),
+        h('p',{className:'cs-body'},cs.body.substring(0,160)+'...'),
+        h('div',{className:'cs-lessons'},h('div',{className:'cl'},'Key IR lessons'),h('ul',null,cs.lessons.slice(0,1).map((l,i)=>h('li',{key:i},l)))),
+        h('div',{className:'cs-foot'},h('span',{style:{fontSize:11,color:'var(--muted)'}}),h('button',{className:'btn bn',style:{fontSize:11,padding:'4px 10px'}},'Read full case →'))
+      ))
+    ),
+    active&&h('div',{className:'mo',onClick:()=>setActive(null)},
+      h('div',{className:'md',style:{maxWidth:580},onClick:e=>e.stopPropagation()},
+        h('div',{className:'md-hd'},h('div',null,h('span',{className:`tag ${CAT_COLORS[active.cat]||'tg'}`,style:{marginBottom:6,display:'inline-block'}},active.cat),h('h3',{style:{marginBottom:0}},active.title)),h('button',{className:'mdc',onClick:()=>setActive(null)},'×')),
+        h('p',{style:{fontSize:12,color:'var(--muted)',fontWeight:300,marginBottom:'1rem'}},active.flag,' ',active.company,' · ',active.year),
+        h('p',{style:{fontSize:13,color:'#334155',fontWeight:300,lineHeight:1.75,marginBottom:'1rem'}},active.body),
+        h('div',{style:{background:'#f8f7f3',borderRadius:8,padding:'1rem'}},
+          h('div',{style:{fontSize:10,fontWeight:600,color:'var(--muted)',letterSpacing:'.5px',textTransform:'uppercase',marginBottom:'.5rem'}},'Key IR Lessons'),
+          h('ul',{style:{listStyle:'none'}},active.lessons.map((l,i)=>h('li',{key:i,style:{fontSize:13,color:'var(--navy)',fontWeight:300,padding:'4px 0 4px 14px',position:'relative',borderBottom:i<active.lessons.length-1?'1px solid var(--border)':'none',lineHeight:1.6}},h('span',{style:{position:'absolute',left:0,top:6,fontSize:11,color:'var(--gold)'}},'→'),l)))
+        )
+      )
+    )
+  );
+}
+
+function JournalTab({aj,setAj}){
+  const e=JOURNALS.find(x=>x.id===aj)||JOURNALS[0];
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Learning Journal'),h('p',null,'Capture reflections from events, peer calls, and readings. Private to your account.')),h('button',{className:'btn bg'},'+ New entry')),
+    h('div',{className:'jl'},
+      h('div',{className:'jside'},
+        JOURNALS.map(x=>h('div',{key:x.id,className:`je${aj===x.id?' ja':''}`,onClick:()=>setAj(x.id)},h('div',{className:'je-d'},x.date),h('div',{className:'je-t'},x.title),h('div',{className:'je-p'},x.prev))),
+        h('button',{className:'btn bo',style:{fontSize:11,width:'100%',justifyContent:'center',marginTop:4}},'View all')
+      ),
+      h('div',{className:'jm'},
+        h('div',{className:'jmh'},h('h4',null,e.title),h('div',{style:{display:'flex',gap:4,alignItems:'center'}},h('span',{style:{fontSize:11,color:'var(--muted)'}},'entry · ',e.date),h('button',{className:'btn bo',style:{fontSize:11,padding:'3px 8px'}},'Edit'))),
+        h('div',{className:'jmb'},e.body),
+        h('div',{className:'jtg'},e.tags.map(t=>h('span',{key:t,className:'tag tgn'},t)))
+      )
+    )
+  );
+}
+
+function AITab(){
+  const init=[{role:'assistant',content:'Hello — I\'m your IR regulatory assistant, trained on Singapore\'s SGX listing rules, the Securities and Futures Act (SFA), Companies Act, MAS guidelines, and global IR best practices.\n\nAsk me anything about your disclosure obligations, SGX compliance, quiet periods, or how Singapore compares to other markets. Use the suggested questions on the left to get started.'}];
+  const [messages,setMessages]=useState(init);
+  const [inp,setInp]=useState('');
+  const [loading,setLoading]=useState(false);
+  const chatRef=useRef(null);
+  useEffect(()=>{if(chatRef.current)chatRef.current.scrollTop=chatRef.current.scrollHeight;},[messages,loading]);
+
+  async function send(txt){
+    if(!txt.trim()||loading)return;
+    setInp('');
+    const next=[...messages,{role:'user',content:txt.trim()}];
+    setMessages(next);
+    setLoading(true);
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:AI_SYS,messages:next.map(m=>({role:m.role,content:m.content}))})
+      });
+      const data=await res.json();
+      const reply=(data.content||[]).find(b=>b.type==='text')?.text||'Unable to retrieve a response. Please try again.';
+      setMessages([...next,{role:'assistant',content:reply}]);
+    }catch(e){
+      setMessages([...next,{role:'assistant',content:'Connection error. Please try again in a moment.'}]);
+    }
+    setLoading(false);
+  }
+
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'AI Assistant'),h('p',null,'Ask questions about Singapore IR law, SGX regulations, and global best practices.'))),
+    h('div',{className:'aiw'},
+      h('div',{className:'aiside'},
+        h('h4',null,'Suggested questions'),
+        h('p',null,'Click any question to send it directly to the assistant.'),
+        h('div',{className:'sqlist'},SEED_QS.map((q,i)=>h('button',{key:i,className:'sq',onClick:()=>send(q)},q)))
+      ),
+      h('div',{className:'aichat'},
+        h('div',{className:'aihead'},h('div',{className:'aiav'},'🤖'),h('div',null,h('h4',null,'IR Regulatory Assistant'),h('p',null,'SGX rules · SFA · Companies Act · Global IR'))),
+        h('div',{className:'chatmsgs',ref:chatRef},
+          messages.map((m,i)=>h('div',{key:i,className:'msg',style:{flexDirection:m.role==='user'?'row-reverse':'row'}},
+            m.role==='assistant'&&h('div',{className:'maiav'},'🤖'),
+            h('div',{className:m.role==='user'?'mbu':'mba'},m.content)
+          )),
+          loading&&h('div',{className:'msg'},h('div',{className:'maiav'},'🤖'),h('div',{className:'typing'},h('span'),h('span'),h('span')))
+        ),
+        h('div',{className:'chatinput'},
+          h('input',{type:'text',placeholder:'Ask about SGX rules, disclosure obligations, IR best practices...',value:inp,onChange:e=>setInp(e.target.value),onKeyDown:e=>e.key==='Enter'&&!loading&&send(inp),disabled:loading}),
+          h('button',{className:'chatsend',onClick:()=>send(inp),disabled:loading||!inp.trim()},'Send')
+        )
+      )
+    )
+  );
+}
+
+function CertsTab({profile}){
+  const levels=['foundation','intermediate','advanced'];
+  const levelLabels={foundation:'Foundation (0–3 yrs)',intermediate:'Intermediate (3–7 yrs)',advanced:'Advanced (7+ yrs)'};
+  const recLevel=profile.yoe<=3?'foundation':profile.yoe<=7?'intermediate':'advanced';
+  const [activeLvl,setActiveLvl]=useState(recLevel);
+  const filtered=ALL_COURSES.filter(c=>c.level===activeLvl);
+  const stCol={'Completed':'#10b981','In progress':'#f59e0b','Not started':'#94a3b8','Launching Q3 2026':'#94a3b8'};
+  const stTag={'Completed':'tgn','In progress':'ta','Not started':'tg','Launching Q3 2026':'tg'};
+  return h('div',null,
+    h('div',{className:'ph'},h('div',null,h('h2',null,'Courses & Certifications'),h('p',null,'Top-tier IR programmes curated by SGListCos. Recommended level based on your ',h('strong',null,profile.yoe,' years'),' of experience.'))),
+    h('div',{className:'sh'},'My credentials'),
+    h('div',{className:'certgrid'},
+      CERTS_DATA.map(c=>h('div',{key:c.title,className:'certc'},
+        h('div',{className:'certtop'},h('div',{className:'certbadge',style:{background:c.bg}},c.ico),h('div',null,h('h4',null,c.title),h('div',{className:'certsub'},c.issuer))),
+        c.prog>0&&h('div',{className:'cpw'},h('div',{className:'cpl'},h('span',null,c.status),h('span',null,c.prog+'%')),h('div',{className:'cpb'},h('div',{className:'cpf',style:{width:c.prog+'%',background:stCol[c.status]}}))),
+        h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'.3rem'}},h('span',{className:`tag ${stTag[c.status]}`},c.status),c.enrolled?h('button',{className:'btn bn',style:{fontSize:11}},'View details'):h('button',{className:'btn bg',style:{fontSize:11}},'Enrol now')),
+        h('div',{className:'certft'},c.detail)
+      ))
+    ),
+    h('div',{className:'sh'},'Course library'),
+    h('div',{className:'clevel-tabs'},
+      levels.map(l=>h('button',{key:l,className:`clt${activeLvl===l?' act':''}${l===recLevel&&activeLvl!==l?' rec':''}`,onClick:()=>setActiveLvl(l)},
+        levelLabels[l],l===recLevel&&h('span',{className:'rec-badge'},'Recommended for you')
+      ))
+    ),
+    h('div',{className:'cgrid2'},
+      filtered.map(c=>h('div',{key:c.id,className:`ccrd${c.rec?' rec-course':''}`,style:{position:'relative'}},
+        c.rec&&h('span',{style:{position:'absolute',top:10,right:10,fontSize:10,background:'#f0fdf4',color:'#166534',border:'1px solid #bbf7d0',padding:'1px 6px',borderRadius:20,fontWeight:600}},'⭐ Recommended'),
+        h('div',{className:'cico'},c.ico),
+        h('h5',null,c.title),
+        h('p',null,c.desc),
+        h('div',{className:'cc-meta'},h('span',{className:'tag tg'},c.provider),h('span',{className:'tag tg'},c.mods+' modules'),h('span',{className:'tag tg'},c.dur)),
+        c.prog>0&&h('div',{className:'cc-prog'},h('div',{style:{display:'flex',justifyContent:'space-between',fontSize:11,color:'var(--muted)',marginBottom:2}},h('span',null,'Progress'),h('span',null,c.prog+'%')),h('div',{className:'cc-pb'},h('div',{className:'cc-pf',style:{width:c.prog+'%'}}))),
+        h('div',{className:'cc-foot'},h('span',null),c.prog>0?h('button',{className:'btn bg',style:{fontSize:11}},'Continue →'):h('button',{className:'btn bn',style:{fontSize:11}},'Start course'))
+      ))
+    )
+  );
+}
+
+function CandModal({c,onClose}){
+  return h('div',{className:'cmdmo',onClick:onClose},
+    h('div',{className:'cmdm',onClick:e=>e.stopPropagation()},
+      h('button',{className:'cmdmc',onClick:onClose},'×'),
+      h('div',{style:{display:'flex',alignItems:'center',gap:'1rem',marginBottom:'1rem'}},
+        h('div',{className:'cav',style:{background:c.bg,color:c.col,width:48,height:48,borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:600,fontSize:15,flexShrink:0}},c.init),
+        h('div',null,h('h3',{style:{fontFamily:'Playfair Display,serif',fontSize:17,color:'var(--navy)'}} ,c.name),h('p',{style:{fontSize:12,color:'var(--muted)',fontWeight:300,marginTop:2}},c.role,' · ',c.company))
+      ),
+      h('div',{className:'msh'},h('label',null,'About'),h('p',null,c.bio)),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'.625rem',margin:'.75rem 0'}},
+        h('div',{className:'msh'},h('label',null,'Experience'),h('p',null,h('strong',null,c.yoe,' yrs'),' in IR')),
+        h('div',{className:'msh'},h('label',null,'Sector'),h('p',null,c.sector)),
+        h('div',{className:'msh'},h('label',null,'Certification'),h('p',null,c.cert!=='—'?c.cert:'None on file')),
+        h('div',{className:'msh'},h('label',null,'Availability'),h('p',null,c.avail==='open'?'Open to roles':'Passively looking'))
+      ),
+      h('div',{className:'msh'},h('label',null,'Skills'),h('div',{className:'skr',style:{marginTop:3,flexWrap:'wrap'}},c.skills.map(s=>h('span',{key:s,className:'stag'},s)))),
+      h('div',{className:'mnote'},'Full contact details and reference reports are released after a formal introduction request. All requests are logged and disclosed to the candidate within 24 hours.'),
+      h('div',{className:'mac'},h('button',{className:'btn bn',style:{flex:1},onClick:onClose},'Request Introduction'),h('button',{className:'btn bo',style:{flex:1},onClick:onClose},'Save to Shortlist'))
+    )
+  );
+}
+
+ReactDOM.render(h(App,null),document.getElementById('root'));
+</script>
